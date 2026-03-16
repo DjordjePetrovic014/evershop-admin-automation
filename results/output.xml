@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.3 on win32)" generated="2026-03-16T15:17:53.814675" rpa="false" schemaversion="5">
+<suite id="s1" name="Admin Login Tests" source="C:\Users\djole\OneDrive\Radna površina\Automation\evershop-automation\tests\admin_login_tests.robot">
+<test id="s1-t1" name="Valid Admin Login And Logout" line="21">
+<kw name="Open Admin Login Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:17:53.978668" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/admin/login'.</msg>
+<arg>${ADMIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-16T15:17:53.978386" elapsed="0.834378"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-16T15:17:54.813119" elapsed="0.036489"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=field-email</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-16T15:17:54.850004" elapsed="0.037204"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:17:53.977669" elapsed="0.909679"/>
+</kw>
+<kw name="Login With Credentials">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:17:54.888413" level="INFO">Typing text 'djolevukas@gmail.com' into text field 'id=field-email'.</msg>
+<arg>id=field-email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:17:54.888207" elapsed="0.206216"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:17:55.094946" level="INFO">Typing password into text field 'name=password'.</msg>
+<msg time="2026-03-16T15:17:55.136775" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>name=password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:17:55.094646" elapsed="0.095598"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:17:55.190563" level="INFO">Clicking button 'SIGN IN'.</msg>
+<arg>SIGN IN</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:17:55.190400" elapsed="0.086261"/>
+</kw>
+<arg>${VALID_EMAIL}</arg>
+<arg>${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-03-16T15:17:54.887880" elapsed="0.388890"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Dashboard</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-16T15:17:55.277117" elapsed="0.015862"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:17:55.294380" level="INFO">Clicking element 'xpath=//button[contains(., "d")]'.</msg>
+<msg time="2026-03-16T15:17:55.789388" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-19.png"&gt;&lt;img src="selenium-screenshot-19.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-16T15:17:55.789563" level="FAIL">StaleElementReferenceException: Message: stale element reference: stale element not found
+  (Session info: chrome=145.0.7632.162); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7c4ebdde5
+	0x7ff7c4ebde40
+	0x7ff7c4c3d67d
+	0x7ff7c4c54d5e
+	0x7ff7c4c53460
+	0x7ff7c4c4629b
+	0x7ff7c4c4403e
+	0x7ff7c4c48704
+	0x7ff7c4c487cf
+	0x7ff7c4c9ad80
+	0x7ff7c4c8b79f
+	0x7ff7c4cc1e8a
+	0x7ff7c4c8b0b6
+	0x7ff7c4ce5e08
+	0x7ff7c4c894b8
+	0x7ff7c4c8a3a3
+	0x7ff7c518c710
+	0x7ff7c5186bcd
+	0x7ff7c51a79ba
+	0x7ff7c4ed9fc5
+	0x7ff7c4ee2a3c
+	0x7ff7c4ec74d4
+	0x7ff7c4ec7686
+	0x7ff7c4eacfe7
+	0x7ff857d8e8d7
+	0x7ff8598cc48c
+</msg>
+<arg>xpath=//button[contains(., "d")]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2026-03-16T15:17:55.294199" elapsed="0.497473">StaleElementReferenceException: Message: stale element reference: stale element not found
+  (Session info: chrome=145.0.7632.162); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x7ff7c4ebdde5
+	0x7ff7c4ebde40
+	0x7ff7c4c3d67d
+	0x7ff7c4c54d5e
+	0x7ff7c4c53460
+	0x7ff7c4c4629b
+	0x7ff7c4c4403e
+	0x7ff7c4c48704
+	0x7ff7c4c487cf
+	0x7ff7c4c9ad80
+	0x7ff7c4c8b79f
+	0x7ff7c4cc1e8a
+	0x7ff7c4c8b0b6
+	0x7ff7c4ce5e08
+	0x7ff7c4c894b8
+	0x7ff7c4c8a3a3
+	0x7ff7c518c710
+	0x7ff7c5186bcd
+	0x7ff7c51a79ba
+	0x7ff7c4ed9fc5
+	0x7ff7c4ee2a3c
+	0x7ff7c4ec74d4
+	0x7ff7c4ec7686
+	0x7ff7c4eacfe7
+	0x7ff857d8e8d7
+	0x7ff8598cc48c
+</status>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:17:56.793277" level="INFO">Clicking element 'xpath=//button[contains(., "d")]'.</msg>
+<arg>xpath=//button[contains(., "d")]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:17:56.792668" elapsed="0.060271"/>
+</kw>
+<arg>10s</arg>
+<arg>1s</arg>
+<arg>Click Element</arg>
+<arg>xpath=//button[contains(., "d")]</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-03-16T15:17:55.293577" elapsed="1.559482"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[normalize-space(.)="Logout"]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-16T15:17:56.853493" elapsed="0.235094"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:17:57.090212" level="INFO">Clicking element 'xpath=//*[normalize-space(.)="Logout"]'.</msg>
+<arg>xpath=//*[normalize-space(.)="Logout"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:17:57.089377" elapsed="0.087009"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=field-email</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-16T15:17:57.176888" elapsed="0.234478"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-16T15:17:57.412022" elapsed="2.193786"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:17:53.976701" elapsed="5.630165"/>
+</test>
+<test id="s1-t2" name="Invalid Admin Login With Wrong Password" line="32">
+<kw name="Open Admin Login Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:17:59.609494" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/admin/login'.</msg>
+<arg>${ADMIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-16T15:17:59.609127" elapsed="1.308738"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-16T15:18:00.918132" elapsed="0.043941"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=field-email</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-16T15:18:00.962271" elapsed="0.026223"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:17:59.608677" elapsed="1.379966"/>
+</kw>
+<kw name="Login With Credentials">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:00.989840" level="INFO">Typing text 'djolevukas@gmail.com' into text field 'id=field-email'.</msg>
+<arg>id=field-email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:00.989579" elapsed="0.169639"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:01.161650" level="INFO">Typing password into text field 'name=password'.</msg>
+<msg time="2026-03-16T15:18:01.206090" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>name=password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:01.160218" elapsed="0.119003"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:01.279661" level="INFO">Clicking button 'SIGN IN'.</msg>
+<arg>SIGN IN</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:01.279430" elapsed="0.092305"/>
+</kw>
+<arg>${VALID_EMAIL}</arg>
+<arg>${INVALID_PASSWORD}</arg>
+<status status="PASS" start="2026-03-16T15:18:00.989151" elapsed="0.382846"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Invalid email or password</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-16T15:18:01.372559" elapsed="0.234124"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-16T15:18:01.607579" elapsed="2.182617"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-16T15:18:03.791150" elapsed="0.000275"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:17:59.607862" elapsed="4.184004"/>
+</test>
+<test id="s1-t3" name="Invalid Admin Login With Wrong Email" line="37">
+<kw name="Open Admin Login Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:03.794450" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/admin/login'.</msg>
+<arg>${ADMIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-16T15:18:03.794105" elapsed="1.335335"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-16T15:18:05.129698" elapsed="0.036595"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=field-email</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-16T15:18:05.167385" elapsed="0.027278"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:03.793652" elapsed="1.401209"/>
+</kw>
+<kw name="Login With Credentials">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:05.196685" level="INFO">Typing text 'wrong@email.com' into text field 'id=field-email'.</msg>
+<arg>id=field-email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:05.195935" elapsed="0.175409"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:05.371947" level="INFO">Typing password into text field 'name=password'.</msg>
+<msg time="2026-03-16T15:18:05.408759" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>name=password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:05.371593" elapsed="0.090342"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:05.462644" level="INFO">Clicking button 'SIGN IN'.</msg>
+<arg>SIGN IN</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:05.462212" elapsed="0.088536"/>
+</kw>
+<arg>${INVALID_EMAIL}</arg>
+<arg>${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-03-16T15:18:05.195365" elapsed="0.355609"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Invalid email or password</arg>
+<arg>10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-16T15:18:05.551473" elapsed="0.228063"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-16T15:18:05.780422" elapsed="2.200050"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:03.792746" elapsed="4.188305"/>
+</test>
+<test id="s1-t4" name="Invalid Admin Login With Empty Password" line="41">
+<kw name="Open Admin Login Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:07.983811" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/admin/login'.</msg>
+<arg>${ADMIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-16T15:18:07.983474" elapsed="1.323043"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-16T15:18:09.306772" elapsed="0.036278"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=field-email</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-16T15:18:09.343350" elapsed="0.031686"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:07.983041" elapsed="1.392152"/>
+</kw>
+<kw name="Login With Credentials">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:09.376785" level="INFO">Typing text 'djolevukas@gmail.com' into text field 'id=field-email'.</msg>
+<arg>id=field-email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:09.376523" elapsed="0.178927"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:09.555903" level="INFO">Typing password into text field 'name=password'.</msg>
+<msg time="2026-03-16T15:18:09.590286" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>name=password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:09.555644" elapsed="0.081262"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:09.637295" level="INFO">Clicking button 'SIGN IN'.</msg>
+<arg>SIGN IN</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:09.637103" elapsed="0.087127"/>
+</kw>
+<arg>${VALID_EMAIL}</arg>
+<arg>${EMPTY}</arg>
+<status status="PASS" start="2026-03-16T15:18:09.375720" elapsed="0.348674"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Password is required</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-16T15:18:09.725244" elapsed="0.024762"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-16T15:18:09.750534" elapsed="2.166096"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:07.982370" elapsed="3.934914"/>
+</test>
+<test id="s1-t5" name="Invalid Admin Login With Empty Email" line="45">
+<kw name="Open Admin Login Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:11.920359" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/admin/login'.</msg>
+<arg>${ADMIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-16T15:18:11.919695" elapsed="1.337887"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-16T15:18:13.257862" elapsed="0.033297"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=field-email</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-16T15:18:13.291509" elapsed="0.042594"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:11.919179" elapsed="1.415128"/>
+</kw>
+<kw name="Login With Credentials">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:13.336027" level="INFO">Typing text '' into text field 'id=field-email'.</msg>
+<arg>id=field-email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:13.335776" elapsed="0.153411"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:13.491337" level="INFO">Typing password into text field 'name=password'.</msg>
+<msg time="2026-03-16T15:18:13.535808" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>name=password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:13.490256" elapsed="0.108229"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:13.599958" level="INFO">Clicking button 'SIGN IN'.</msg>
+<arg>SIGN IN</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:13.599218" elapsed="0.084898"/>
+</kw>
+<arg>${EMPTY}</arg>
+<arg>${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-03-16T15:18:13.334909" elapsed="0.349360"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Email is required</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-16T15:18:13.684999" elapsed="0.020859"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-16T15:18:13.707203" elapsed="2.150627"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:11.918202" elapsed="3.940312"/>
+</test>
+<test id="s1-t6" name="Invalid Admin Login With Empty Email And Password" line="49">
+<kw name="Open Admin Login Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:15.861508" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/admin/login'.</msg>
+<arg>${ADMIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-16T15:18:15.861106" elapsed="1.355290"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-16T15:18:17.216692" elapsed="0.038397"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=field-email</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-16T15:18:17.255363" elapsed="0.027925"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:15.860573" elapsed="1.422995"/>
+</kw>
+<kw name="Login With Credentials">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:17.286513" level="INFO">Typing text '' into text field 'id=field-email'.</msg>
+<arg>id=field-email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:17.285986" elapsed="0.153840"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:17.440753" level="INFO">Typing password into text field 'name=password'.</msg>
+<msg time="2026-03-16T15:18:17.487159" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>name=password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:17.440295" elapsed="0.097804"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:17.538852" level="INFO">Clicking button 'SIGN IN'.</msg>
+<arg>SIGN IN</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:17.538454" elapsed="0.098399"/>
+</kw>
+<arg>${EMPTY}</arg>
+<arg>${EMPTY}</arg>
+<status status="PASS" start="2026-03-16T15:18:17.284343" elapsed="0.352640"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Email is required</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-16T15:18:17.637566" elapsed="0.034219"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-16T15:18:17.672395" elapsed="2.154092"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:15.859507" elapsed="3.967579"/>
+</test>
+<test id="s1-t7" name="Invalid Admin Login With Short Password" line="53">
+<kw name="Open Admin Login Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:19.829627" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/admin/login'.</msg>
+<arg>${ADMIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-16T15:18:19.829271" elapsed="1.329357"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-16T15:18:21.158944" elapsed="0.032475"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=field-email</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-16T15:18:21.192065" elapsed="0.029206"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:19.828771" elapsed="1.392650"/>
+</kw>
+<kw name="Login With Credentials">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:21.223475" level="INFO">Typing text 'djolevukas@gmail.com' into text field 'id=field-email'.</msg>
+<arg>id=field-email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:21.222766" elapsed="0.175828"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:21.400375" level="INFO">Typing password into text field 'name=password'.</msg>
+<msg time="2026-03-16T15:18:21.438296" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>name=password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:21.398989" elapsed="0.096810"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:21.496191" level="INFO">Clicking button 'SIGN IN'.</msg>
+<arg>SIGN IN</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:21.495991" elapsed="0.089720"/>
+</kw>
+<arg>${VALID_EMAIL}</arg>
+<arg>${SHORT_PASSWORD}</arg>
+<status status="PASS" start="2026-03-16T15:18:21.221928" elapsed="0.364029"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Password must be at least 6 characters long</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-16T15:18:21.586497" elapsed="0.015160"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-16T15:18:21.602516" elapsed="2.164823"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:19.827926" elapsed="3.940024"/>
+</test>
+<test id="s1-t8" name="Invalid Admin Login With Invalid Email Format" line="57">
+<kw name="Open Admin Login Page" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:23.770652" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000/admin/login'.</msg>
+<arg>${ADMIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-03-16T15:18:23.770275" elapsed="1.330623"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-03-16T15:18:25.101277" elapsed="0.034276"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>id=field-email</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-16T15:18:25.135941" elapsed="0.027832"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:23.769762" elapsed="1.394149"/>
+</kw>
+<kw name="Login With Credentials">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:25.165251" level="INFO">Typing text 'djolevukas' into text field 'id=field-email'.</msg>
+<arg>id=field-email</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:25.164996" elapsed="0.165714"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:25.331264" level="INFO">Typing password into text field 'name=password'.</msg>
+<msg time="2026-03-16T15:18:25.383191" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>name=password</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:25.330939" elapsed="0.115824"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-16T15:18:25.447143" level="INFO">Clicking button 'SIGN IN'.</msg>
+<arg>SIGN IN</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-16T15:18:25.446954" elapsed="0.098699"/>
+</kw>
+<arg>${INVALID_EMAIL_FORMAT}</arg>
+<arg>${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-03-16T15:18:25.164523" elapsed="0.381270"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Please enter a valid email address</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2026-03-16T15:18:25.546271" elapsed="0.030750"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-03-16T15:18:25.578221" elapsed="2.151094"/>
+</kw>
+<status status="PASS" start="2026-03-16T15:18:23.768830" elapsed="3.960788"/>
+</test>
+<status status="PASS" start="2026-03-16T15:17:53.817337" elapsed="33.912768"/>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Admin Login Tests" id="s1" pass="8" fail="0" skip="0">Admin Login Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
