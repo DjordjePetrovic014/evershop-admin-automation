@@ -1,5 +1,6 @@
 *** Settings ***
-Library    SeleniumLibrary
+Resource        ../pages/admin_login_page.robot
+
 Test Setup       Open Admin Login Page
 Test Teardown    Close Browser
 
@@ -7,8 +8,6 @@ Test Teardown    Close Browser
 # robot -d results tests/admin_login_tests.robot
 
 *** Variables ***
-${ADMIN_URL}                http://localhost:3000/admin/login
-${BROWSER}                  chrome
 ${VALID_EMAIL}              djolevukas@gmail.com
 ${INVALID_EMAIL}            wrong@email.com
 ${INVALID_EMAIL_FORMAT}     djolevukas
@@ -20,11 +19,8 @@ ${SHORT_PASSWORD}           1234
 *** Test Cases ***
 Valid Admin Login And Logout
     Login With Credentials          ${VALID_EMAIL}    ${VALID_PASSWORD}
-    Wait Until Page Contains         Dashboard    10s
-    Wait Until Keyword Succeeds      10s    1s    Click Element    xpath=//button[contains(., "d")]
-    Wait Until Element Is Visible    xpath=//*[normalize-space(.)="Logout"]    10s
-    Click Element                    xpath=//*[normalize-space(.)="Logout"]
-    Wait Until Element Is Visible    id=field-email    10s
+    Admin Dashboard Should Be Visible
+    Logout Admin User
 
 Invalid Admin Login With Wrong Password
     Login With Credentials      ${VALID_EMAIL}    ${INVALID_PASSWORD}
@@ -53,17 +49,3 @@ Invalid Admin Login With Short Password
 Invalid Admin Login With Invalid Email Format
     Login With Credentials      ${INVALID_EMAIL_FORMAT}    ${VALID_PASSWORD}
     Wait Until Page Contains    Please enter a valid email address
-
-
-*** Keywords ***
-Open Admin Login Page
-    Open Browser                    ${ADMIN_URL}    ${BROWSER}
-    #Set Selenium Speed    0.5s
-    Maximize Browser Window
-    Wait Until Element Is Visible    id=field-email    10s
-
-Login With Credentials
-    [Arguments]         ${email}    ${password}
-    Input Text          id=field-email    ${email}
-    Input Password      name=password    ${password}
-    Click Button        SIGN IN
