@@ -1,0 +1,19 @@
+# Robot Framework outputs
+results/
+log.html
+report.html
+output.xml
+
+# Screenshots
+*.png
+
+# IDE
+.idea/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
