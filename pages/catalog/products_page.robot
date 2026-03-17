@@ -74,3 +74,8 @@ Save Product
 
     Scroll Element Into View        ${SAVE_BUTTON}
     Click Element                   ${SAVE_BUTTON}
+
+Save Product And Expect Duplicate SKU Error
+    Scroll Element Into View        ${SAVE_BUTTON}
+    Click Element                   ${SAVE_BUTTON}
+    Wait Until Page Contains        duplicate key value violates unique constraint "PRODUCT_SKU_UNIQUE"    10s

@@ -32,3 +32,12 @@ Create Product - Basic Info Only
     Open New Product Form
     Fill Basic Product Info    Test Product ${timestamp}    TEST${timestamp}    test-product-${timestamp}
     Save Product
+
+Create Product With Duplicate SKU Should Fail
+    ${timestamp}=    Get Time    epoch
+    Login With Credentials    ${VALID_EMAIL}    ${VALID_PASSWORD}
+    Admin Dashboard Should Be Visible
+    Open Products Page
+    Open New Product Form
+    Fill Basic Product Info    Duplicate Product ${timestamp}    TEST1234    duplicate-product-${timestamp}
+    Save Product And Expect Duplicate SKU Error
