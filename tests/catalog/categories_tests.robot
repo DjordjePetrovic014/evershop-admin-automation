@@ -17,3 +17,9 @@ Open Categories Page Successfully
     Login With Credentials    ${VALID_EMAIL}    ${VALID_PASSWORD}
     Admin Dashboard Should Be Visible
     Open Categories Page
+
+Open New Category Form Successfully
+    Login With Credentials    ${VALID_EMAIL}    ${VALID_PASSWORD}
+    Admin Dashboard Should Be Visible
+    Open Categories Page
+    Open New Category Form

@@ -53,6 +53,10 @@ The test suite covers product-related flows in the admin panel:
 - Product without SKU should fail
 - Product without price should fail
 
+### Categories page automation:
+- Open Categories page
+- Open New Category form
+
 ### How to Run Tests
 
 - Run login tests: robot -d results tests/admin_login_tests.robot
