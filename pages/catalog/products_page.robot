@@ -76,6 +76,11 @@ Fill Required Product Information
     Clear Element Text              ${META_TITLE_INPUT}
     Input Text                      ${META_TITLE_INPUT}     ${product_name}
 
+Update Product Price
+    [Arguments]    ${new_price}
+    Clear Element Text    ${PRICE_INPUT}
+    Input Text            ${PRICE_INPUT}    ${new_price}
+
 Save Product
     Scroll Element Into View        ${SAVE_BUTTON}
     Click Element                   ${SAVE_BUTTON}
@@ -110,6 +115,11 @@ Save Product And Expect Price Validation Error
     Scroll Element Into View        ${SAVE_BUTTON}
     Click Element                   ${SAVE_BUTTON}
     Wait Until Page Contains        Price is required   10s
+
+Save Product And Expect Success Message
+    Scroll Element Into View        ${SAVE_BUTTON}
+    Click Element                   ${SAVE_BUTTON}
+    Wait Until Page Contains        Product updated successfully    10s
 
 Product Should Be Visible In List
     [Arguments]    ${product_name}

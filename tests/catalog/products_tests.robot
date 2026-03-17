@@ -47,6 +47,25 @@ Search Product Should Return Created Product
 
     Wait Until Page Contains         ${product_name}    10s
 
+Edit Product Price Successfully
+    ${timestamp}=       Get Time        epoch
+    ${product_name}=    Set Variable    Test Product ${timestamp}
+    ${sku}=             Set Variable    TEST${timestamp}
+    ${url_key}=         Set Variable    test-product-${timestamp}
+    ${updated_price}=   Set Variable    80
+
+    Open Products Page
+    Open New Product Form
+    Fill Required Product Information    ${product_name}    ${sku}    50    ${url_key}
+    Save Product
+
+    Open Products Page
+    Search And Open Product    ${product_name}
+
+    Update Product Price    ${updated_price}
+
+    Save Product And Expect Success Message
+
 Create And Delete Product Successfully
     ${timestamp}=       Get Time        epoch
     ${product_name}=    Set Variable    Test Product ${timestamp}
