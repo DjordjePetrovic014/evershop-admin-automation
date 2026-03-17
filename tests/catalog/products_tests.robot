@@ -14,20 +14,21 @@ ${VALID_PASSWORD}    test1234
 
 *** Test Cases ***
 Open Products Page Successfully
-    Login With Credentials    ${VALID_EMAIL}    ${VALID_PASSWORD}
+    Login With Credentials             ${VALID_EMAIL}    ${VALID_PASSWORD}
     Admin Dashboard Should Be Visible
     Open Products Page
 
 Open New Product Form Successfully
-    Login With Credentials    ${VALID_EMAIL}    ${VALID_PASSWORD}
+    Login With Credentials              ${VALID_EMAIL}    ${VALID_PASSWORD}
     Admin Dashboard Should Be Visible
     Open Products Page
     Open New Product Form
 
 Create Product - Basic Info Only
-    Login With Credentials    ${VALID_EMAIL}    ${VALID_PASSWORD}
+    ${timestamp}=       Get Time        epoch
+    Login With Credentials              ${VALID_EMAIL}    ${VALID_PASSWORD}
     Admin Dashboard Should Be Visible
     Open Products Page
     Open New Product Form
-    Fill Basic Product Info
+    Fill Basic Product Info    Test Product ${timestamp}    TEST${timestamp}    test-product-${timestamp}
     Save Product

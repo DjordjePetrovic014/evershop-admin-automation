@@ -33,11 +33,12 @@ Open New Product Form
     Wait Until Page Contains         Product Name               10s
 
 Fill Basic Product Info
+    [Arguments]                     ${product_name}    ${sku}    ${url_key}
     Clear Element Text              ${PRODUCT_NAME_INPUT}
-    Input Text                      ${PRODUCT_NAME_INPUT}       Test Product 1234
+    Input Text                      ${PRODUCT_NAME_INPUT}       ${product_name}
 
     Clear Element Text              ${SKU_INPUT}
-    Input Text                      ${SKU_INPUT}                TEST1234
+    Input Text                      ${SKU_INPUT}                ${sku}
 
     Clear Element Text              ${PRICE_INPUT}
     Input Text                      ${PRICE_INPUT}              50
@@ -60,7 +61,7 @@ Fill Basic Product Info
     Input Text                      ${WEIGHT_INPUT}          1
 
     Clear Element Text              ${URL_KEY_INPUT}
-    Input Text                      ${URL_KEY_INPUT}        test-product-1234
+    Input Text                      ${URL_KEY_INPUT}        ${url_key}
 
     Clear Element Text              ${META_TITLE_INPUT}
     Input Text                      ${META_TITLE_INPUT}     Test Product 1234
