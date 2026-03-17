@@ -32,6 +32,7 @@ The test suite covers product-related flows in the admin panel:
 - Open new product form
 - Create product with dynamic data
 - Search and open created product
+- Edit product (price update)
 - Delete product from product list
 
 ### Validation Scenarios
