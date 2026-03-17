@@ -8,6 +8,17 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
 
+## Test Environment
+
+The tests are executed against a locally running EverShop admin instance.
+
+Base URL used in the project:
+
+`http://localhost:3000/admin/login`
+
+The application is started locally and tested through Docker-based environment setup.
+
+
 ## Admin Login Test Scenarios
 
 The test suite covers both positive and negative login scenarios:
