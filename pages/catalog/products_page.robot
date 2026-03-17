@@ -28,7 +28,7 @@ ${IN_STOCK_OPTION}              xpath=//label[contains(.,'In Stock')]
 ${SAVE_BUTTON}                  xpath=//button[contains(.,'Save')]
 ${EDITING_HEADER}               xpath=//h1[contains(.,'Editing')]
 
-#Delete buttons
+# Delete actions
 ${DELETE_BUTTON}                xpath=//button[contains(.,'Delete')]
 ${DELETE_CONFIRM_BUTTON}        xpath=(//button[contains(.,'Delete')])[last()]
 
