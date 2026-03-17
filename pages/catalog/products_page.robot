@@ -22,7 +22,7 @@ ${META_TITLE_INPUT}             xpath=//input[@name='meta_title']
 ${SAVE_BUTTON}                  xpath=//button[contains(.,'Save')]
 ${EDITING_HEADER}               xpath=//h1[contains(.,'Editing')]
 
-${SEARCH_INPUT}    xpath=//input[@placeholder='Search']
+${SEARCH_INPUT}                 xpath=//input[@placeholder='Search']
 
 *** Keywords ***
 Open Products Page
@@ -35,7 +35,7 @@ Open New Product Form
     Wait Until Page Contains         Product Name               10s
 
 Fill Basic Product Info
-    [Arguments]                     ${product_name}    ${sku}    ${url_key}
+    [Arguments]                     ${product_name}    ${sku}    ${price}    ${url_key}
     Clear Element Text              ${PRODUCT_NAME_INPUT}
     Input Text                      ${PRODUCT_NAME_INPUT}       ${product_name}
 
@@ -43,7 +43,7 @@ Fill Basic Product Info
     Input Text                      ${SKU_INPUT}                ${sku}
 
     Clear Element Text              ${PRICE_INPUT}
-    Input Text                      ${PRICE_INPUT}              50
+    Input Text                      ${PRICE_INPUT}              ${price}
 
     Click Element                   ${TAX_CLASS_DROPDOWN}
     Wait Until Element Is Visible   ${TAXABLE_GOODS_OPTION}    10s
@@ -87,3 +87,18 @@ Search And Open Product
     Input Text                      ${SEARCH_INPUT}    ${product_name}
     Wait Until Element Is Visible   xpath=//a[contains(.,'${product_name}')]    10s
     Click Element                   xpath=//a[contains(.,'${product_name}')]
+
+Save Product And Expect Name Validation Error
+    Scroll Element Into View        ${SAVE_BUTTON}
+    Click Element                   ${SAVE_BUTTON}
+    Wait Until Page Contains        Product Name is required    10s
+
+Save Product And Expect SKU Validation Error
+    Scroll Element Into View        ${SAVE_BUTTON}
+    Click Element                   ${SAVE_BUTTON}
+    Wait Until Page Contains        SKU is required    10s
+
+Save Product And Expect Price Validation Error
+    Scroll Element Into View        ${SAVE_BUTTON}
+    Click Element                   ${SAVE_BUTTON}
+    Wait Until Page Contains        Price is required   10s
