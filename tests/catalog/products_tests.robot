@@ -67,10 +67,16 @@ Create And Delete Product Successfully
 
 # Negative / validation tests
 Create Product With Duplicate SKU Should Fail
-    ${timestamp}=    Get Time           epoch
+    ${timestamp}=    Get Time    epoch
+
     Open Products Page
     Open New Product Form
-    Fill Required Product Information             Duplicate Product ${timestamp}    TEST1234    50    duplicate-product-${timestamp}
+    Fill Required Product Information    Product A ${timestamp}    TEST1234    50    product-a-${timestamp}
+    Save Product
+
+    Open Products Page
+    Open New Product Form
+    Fill Required Product Information    Product B ${timestamp}    TEST1234    50    product-b-${timestamp}
     Save Product And Expect Duplicate SKU Error
 
 Create Product Without Name Should Fail
