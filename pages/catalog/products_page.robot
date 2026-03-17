@@ -22,6 +22,8 @@ ${META_TITLE_INPUT}             xpath=//input[@name='meta_title']
 ${SAVE_BUTTON}                  xpath=//button[contains(.,'Save')]
 ${EDITING_HEADER}               xpath=//h1[contains(.,'Editing')]
 
+${SEARCH_INPUT}    xpath=//input[@placeholder='Search']
+
 *** Keywords ***
 Open Products Page
     Click Element                   ${PRODUCTS_MENU}
@@ -79,3 +81,9 @@ Save Product And Expect Duplicate SKU Error
     Scroll Element Into View        ${SAVE_BUTTON}
     Click Element                   ${SAVE_BUTTON}
     Wait Until Page Contains        duplicate key value violates unique constraint "PRODUCT_SKU_UNIQUE"    10s
+
+Search And Open Product
+    [Arguments]                     ${product_name}
+    Input Text                      ${SEARCH_INPUT}    ${product_name}
+    Wait Until Element Is Visible   xpath=//a[contains(.,'${product_name}')]    10s
+    Click Element                   xpath=//a[contains(.,'${product_name}')]
