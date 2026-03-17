@@ -33,7 +33,7 @@ The test suite covers product-related flows in the admin panel:
 - Create product with dynamic data
 - Search and open created product
 - Edit product (price update)
-- Delete product from product list
+- Delete product from product list (E2E - Create product → Verify in list → Delete product → Verify removal)
 
 ### Validation Scenarios
 
@@ -41,10 +41,6 @@ The test suite covers product-related flows in the admin panel:
 - Product without name should fail
 - Product without SKU should fail
 - Product without price should fail
-
-### End-to-End Flow
-
-- Create product → Verify in list → Delete product → Verify removal
 
 ### How to Run Tests
 
