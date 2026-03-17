@@ -2,27 +2,31 @@
 Library    SeleniumLibrary
 
 *** Variables ***
+# Navigation
 ${PRODUCTS_MENU}                xpath=//a[contains(., "Products")]
 ${NEW_PRODUCT_BUTTON}           xpath=(//button[@title="New Product"])[last()]
-${NEW_PRODUCT_MENU}             xpath=//a[@href="/admin/products/new"]
+${SEARCH_INPUT}                 xpath=//input[@placeholder='Search']
 
+# Form fields
 ${PRODUCT_NAME_INPUT}           xpath=//input[@name='name']
 ${SKU_INPUT}                    xpath=//input[@name='sku']
 ${PRICE_INPUT}                  xpath=//input[@name='price']
+${QTY_INPUT}                    xpath=//input[@name='qty']
+${WEIGHT_INPUT}                 xpath=//input[@name='weight']
+${URL_KEY_INPUT}                xpath=//input[@name='url_key']
+${META_TITLE_INPUT}             xpath=//input[@name='meta_title']
+
+# Dropdowns and options
 ${TAX_CLASS_DROPDOWN}           xpath=//button[@id='field-tax_class']
 ${TAXABLE_GOODS_OPTION}         xpath=//div[@role='option' and contains(.,'Taxable Goods')]
 ${STATUS_ENABLED}               xpath=//label[contains(.,'Enabled')]
 ${VISIBILITY_CATALOG_SEARCH}    xpath=//label[contains(.,'Catalog, Search')]
 ${MANAGE_STOCK_YES}             xpath=//label[contains(.,'Yes')]
 ${IN_STOCK_OPTION}              xpath=//label[contains(.,'In Stock')]
-${QTY_INPUT}                    xpath=//input[@name='qty']
-${WEIGHT_INPUT}                 xpath=//input[@name='weight']
-${URL_KEY_INPUT}                xpath=//input[@name='url_key']
-${META_TITLE_INPUT}             xpath=//input[@name='meta_title']
+
+# Page state / actions
 ${SAVE_BUTTON}                  xpath=//button[contains(.,'Save')]
 ${EDITING_HEADER}               xpath=//h1[contains(.,'Editing')]
-
-${SEARCH_INPUT}                 xpath=//input[@placeholder='Search']
 
 *** Keywords ***
 Open Products Page
@@ -34,7 +38,7 @@ Open New Product Form
     Click Element                    ${NEW_PRODUCT_BUTTON}
     Wait Until Page Contains         Product Name               10s
 
-Fill Basic Product Info
+Fill Required Product Information
     [Arguments]                     ${product_name}    ${sku}    ${price}    ${url_key}
     Clear Element Text              ${PRODUCT_NAME_INPUT}
     Input Text                      ${PRODUCT_NAME_INPUT}       ${product_name}
@@ -66,7 +70,7 @@ Fill Basic Product Info
     Input Text                      ${URL_KEY_INPUT}        ${url_key}
 
     Clear Element Text              ${META_TITLE_INPUT}
-    Input Text                      ${META_TITLE_INPUT}     Test Product 1234
+    Input Text                      ${META_TITLE_INPUT}     ${product_name}
 
 Save Product
     Scroll Element Into View        ${SAVE_BUTTON}

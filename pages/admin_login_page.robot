@@ -11,7 +11,7 @@ ${LOGOUT_OPTION}        xpath=//*[normalize-space(.)="Logout"]
 
 *** Keywords ***
 Open Admin Login Page
-    Open Browser    ${ADMIN_URL}     chrome
+    Open Browser                     ${ADMIN_URL}     chrome
     Set Selenium Speed               0.2s
     Maximize Browser Window
     Wait Until Element Is Visible    ${EMAIL_FIELD}    10s
@@ -33,11 +33,17 @@ Login With Credentials
     Enter Password      ${password}
     Click Login
 
+Login As Admin
+    [Arguments]                      ${email}    ${password}
+    Open Admin Login Page
+    Login With Credentials           ${email}    ${password}
+    Admin Dashboard Should Be Visible
+
+Admin Dashboard Should Be Visible
+    Wait Until Page Contains         Dashboard           10s
+
 Logout Admin User
     Wait Until Keyword Succeeds      10s    1s    Click Element    ${USER_MENU_BUTTON}
     Wait Until Element Is Visible    ${LOGOUT_OPTION}    10s
     Click Element                    ${LOGOUT_OPTION}
     Wait Until Element Is Visible    ${EMAIL_FIELD}      10s
-
-Admin Dashboard Should Be Visible
-    Wait Until Page Contains         Dashboard           10s
