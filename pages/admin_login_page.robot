@@ -12,7 +12,7 @@ ${LOGOUT_OPTION}        xpath=//*[normalize-space(.)="Logout"]
 *** Keywords ***
 Open Admin Login Page
     Open Browser                     ${ADMIN_URL}     chrome
-    Set Selenium Speed               0.2s
+    Set Selenium Speed               0.1s
     Maximize Browser Window
     Wait Until Element Is Visible    ${EMAIL_FIELD}    10s
 
