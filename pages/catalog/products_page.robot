@@ -28,6 +28,10 @@ ${IN_STOCK_OPTION}              xpath=//label[contains(.,'In Stock')]
 ${SAVE_BUTTON}                  xpath=//button[contains(.,'Save')]
 ${EDITING_HEADER}               xpath=//h1[contains(.,'Editing')]
 
+#Delete buttons
+${DELETE_BUTTON}                xpath=//button[contains(.,'Delete')]
+${DELETE_CONFIRM_BUTTON}        xpath=(//button[contains(.,'Delete')])[last()]
+
 *** Keywords ***
 Open Products Page
     Click Element                   ${PRODUCTS_MENU}
@@ -106,3 +110,23 @@ Save Product And Expect Price Validation Error
     Scroll Element Into View        ${SAVE_BUTTON}
     Click Element                   ${SAVE_BUTTON}
     Wait Until Page Contains        Price is required   10s
+
+Product Should Be Visible In List
+    [Arguments]    ${product_name}
+    Wait Until Page Contains    ${product_name}    10s
+
+Select Product Checkbox
+    [Arguments]    ${product_name}
+    Click Element    xpath=//td[contains(.,'${product_name}')]/ancestor::tr//span[@role='checkbox']
+
+Click Delete Button
+    Click Element                   ${DELETE_BUTTON}
+
+Confirm Product Deletion
+    Wait Until Element Is Visible    ${DELETE_CONFIRM_BUTTON}    10s
+    Click Element                    ${DELETE_CONFIRM_BUTTON}
+
+
+Product Should Not Be Visible In List
+    [Arguments]                         ${product_name}
+    Wait Until Page Does Not Contain    ${product_name}    10s

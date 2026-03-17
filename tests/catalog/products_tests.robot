@@ -89,3 +89,21 @@ Create Product Without Price Should Fail
     Fill Required Product Information         ${product_name}    ${sku}    ${EMPTY}    ${url_key}
 
     Save Product And Expect Price Validation Error
+
+Create And Delete Product Successfully
+    ${timestamp}=       Get Time        epoch
+    ${product_name}=    Set Variable    Test Product ${timestamp}
+    ${sku}=             Set Variable    TEST${timestamp}
+    ${url_key}=         Set Variable    test-product-${timestamp}
+
+    Open Products Page
+    Open New Product Form
+    Fill Required Product Information    ${product_name}    ${sku}    50    ${url_key}
+    Save Product
+
+    Open Products Page
+    Product Should Be Visible In List    ${product_name}
+    Select Product Checkbox              ${product_name}
+    Click Delete Button
+    Confirm Product Deletion
+    Product Should Not Be Visible In List    ${product_name}
