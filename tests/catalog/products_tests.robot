@@ -17,3 +17,17 @@ Open Products Page Successfully
     Login With Credentials    ${VALID_EMAIL}    ${VALID_PASSWORD}
     Admin Dashboard Should Be Visible
     Open Products Page
+
+Open New Product Form Successfully
+    Login With Credentials    ${VALID_EMAIL}    ${VALID_PASSWORD}
+    Admin Dashboard Should Be Visible
+    Open Products Page
+    Open New Product Form
+
+Create Product - Basic Info Only
+    Login With Credentials    ${VALID_EMAIL}    ${VALID_PASSWORD}
+    Admin Dashboard Should Be Visible
+    Open Products Page
+    Open New Product Form
+    Fill Basic Product Info
+    Save Product

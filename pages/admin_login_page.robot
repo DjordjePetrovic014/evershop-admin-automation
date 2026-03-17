@@ -37,7 +37,7 @@ Logout Admin User
     Wait Until Keyword Succeeds      10s    1s    Click Element    ${USER_MENU_BUTTON}
     Wait Until Element Is Visible    ${LOGOUT_OPTION}    10s
     Click Element                    ${LOGOUT_OPTION}
-    Wait Until Element Is Visible    ${EMAIL_FIELD}    10s
+    Wait Until Element Is Visible    ${EMAIL_FIELD}      10s
 
 Admin Dashboard Should Be Visible
-    Wait Until Page Contains         Dashboard    10s
+    Wait Until Page Contains         Dashboard           10s
