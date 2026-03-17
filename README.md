@@ -1,12 +1,14 @@
-# EverShop Admin Login Automation Tests
+# EverShop Admin Automation Tests
 
-The tests are written using:
+## Tech Stack
 
-- Robot Framework
-- SeleniumLibrary
-- Chrome WebDriver
+![Robot Framework](https://img.shields.io/badge/Robot_Framework-000000?style=for-the-badge&logo=robotframework&logoColor=white)
+![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![Chrome](https://img.shields.io/badge/Chrome_WebDriver-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-## Test Scenarios
+
+## Admin Login Test Scenarios
 
 The test suite covers both positive and negative login scenarios:
 
@@ -19,10 +21,34 @@ The test suite covers both positive and negative login scenarios:
 - Password shorter than allowed length
 - Invalid email format
 
-## How to Run Tests
-
-Run the tests from the project root using:
-
-```
+Run login tests:
 robot -d results tests/admin_login_tests.robot
-```
+
+## Product Management Test Scenarios
+
+The test suite covers product-related flows in the admin panel:
+
+- Open products page
+- Open new product form
+- Create product with dynamic data
+- Search and open created product
+- Delete product from product list
+
+### Validation Scenarios
+
+- Duplicate SKU should fail
+- Product without name should fail
+- Product without SKU should fail
+- Product without price should fail
+
+### End-to-End Flow
+
+- Create product → Verify in list → Delete product → Verify removal
+
+### How to Run Tests
+
+Run login tests: robot -d results tests/admin_login_tests.robot
+Run product tests: robot -d results tests/catalog/products_tests.robot
+
+
+
