@@ -47,8 +47,8 @@ The test suite covers product-related flows in the admin panel:
 
 ### How to Run Tests
 
-Run login tests: robot -d results tests/admin_login_tests.robot
-Run product tests: robot -d results tests/catalog/products_tests.robot
+- Run login tests: robot -d results tests/admin_login_tests.robot
+- Run product tests: robot -d results tests/catalog/products_tests.robot
 
 
 
