@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../../pages/admin_login_page.robot
+Resource    ../../resources/keywords/admin/login_keywords.resource
 Resource    ../../pages/catalog/categories_page.robot
 
 # Test run:

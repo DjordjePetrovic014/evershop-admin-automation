@@ -1,5 +1,5 @@
 *** Settings ***
-Resource        ../pages/admin_login_page.robot
+Resource    ../resources/keywords/admin/login_keywords.resource
 
 Test Setup       Open Admin Login Page
 Test Teardown    Close Browser
