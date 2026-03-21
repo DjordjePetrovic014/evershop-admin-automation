@@ -18,34 +18,41 @@ ${SHORT_PASSWORD}           1234
 
 *** Test Cases ***
 Valid Admin Login And Logout
-    Login With Credentials          ${VALID_EMAIL}    ${VALID_PASSWORD}
-    Admin Dashboard Should Be Visible
+    [Tags]            smoke    login    positive
+    Login As Admin    ${VALID_EMAIL}    ${VALID_PASSWORD}
     Logout Admin User
 
 Invalid Admin Login With Wrong Password
+    [Tags]                      login    negative
     Login With Credentials      ${VALID_EMAIL}    ${INVALID_PASSWORD}
     Wait Until Page Contains    Invalid email or password    10s
 
 Invalid Admin Login With Wrong Email
+    [Tags]                      login    negative
     Login With Credentials      ${INVALID_EMAIL}    ${VALID_PASSWORD}
     Wait Until Page Contains    Invalid email or password    10s
 
 Invalid Admin Login With Empty Password
+    [Tags]                      login    negative
     Login With Credentials      ${VALID_EMAIL}    ${EMPTY}
     Wait Until Page Contains    Password is required
 
 Invalid Admin Login With Empty Email
+    [Tags]                      login    negative
     Login With Credentials      ${EMPTY}    ${VALID_PASSWORD}
     Wait Until Page Contains    Email is required
 
 Invalid Admin Login With Empty Email And Password
+    [Tags]                      login    negative
     Login With Credentials      ${EMPTY}    ${EMPTY}
     Wait Until Page Contains    Email is required
 
 Invalid Admin Login With Short Password
+    [Tags]                      login    negative
     Login With Credentials      ${VALID_EMAIL}    ${SHORT_PASSWORD}
     Wait Until Page Contains    Password must be at least 6 characters long
 
 Invalid Admin Login With Invalid Email Format
+    [Tags]                      login    negative
     Login With Credentials      ${INVALID_EMAIL_FORMAT}    ${VALID_PASSWORD}
     Wait Until Page Contains    Please enter a valid email address

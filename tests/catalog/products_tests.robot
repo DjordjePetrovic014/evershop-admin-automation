@@ -16,13 +16,16 @@ ${VALID_PASSWORD}    test1234
 
 # Positive / happy path tests
 Open Products Page Successfully
+    [Tags]                              smoke    product
     Open Products Page
 
 Open New Product Form Successfully
+    [Tags]                              product    create
     Open Products Page
     Open New Product Form
 
 Create A New Product Successfully
+    [Tags]                              product    create
     ${timestamp}=       Get Time        epoch
     Open Products Page
     Open New Product Form
@@ -30,6 +33,7 @@ Create A New Product Successfully
     Save Product
 
 Search Product Should Return Created Product
+    [Tags]                              product    search
     ${timestamp}=                   Get Time        epoch
 
     ${product_name}=                Set Variable    Test Product ${timestamp}
@@ -48,6 +52,7 @@ Search Product Should Return Created Product
     Wait Until Page Contains         ${product_name}    10s
 
 Edit Product Price Successfully
+    [Tags]                              product    update
     ${timestamp}=       Get Time        epoch
     ${product_name}=    Set Variable    Test Product ${timestamp}
     ${sku}=             Set Variable    TEST${timestamp}
@@ -67,6 +72,7 @@ Edit Product Price Successfully
     Save Product And Expect Success Message
 
 Create And Delete Product Successfully
+    [Tags]                              product    delete    crud
     ${timestamp}=       Get Time        epoch
     ${product_name}=    Set Variable    Test Product ${timestamp}
     ${sku}=             Set Variable    TEST${timestamp}
@@ -86,6 +92,7 @@ Create And Delete Product Successfully
 
 # Negative / validation tests
 Create Product With Duplicate SKU Should Fail
+    [Tags]                               product    negative
     ${timestamp}=        Get Time        epoch
     ${duplicate_sku}=    Set Variable    TEST${timestamp}
 
@@ -100,6 +107,7 @@ Create Product With Duplicate SKU Should Fail
     Save Product And Expect Duplicate SKU Error
 
 Create Product Without Name Should Fail
+    [Tags]                                          product    negative
     ${timestamp}=                   Get Time        epoch
     ${sku}=                         Set Variable    TEST${timestamp}
     ${url_key}=                     Set Variable    test-product-${timestamp}
@@ -112,6 +120,7 @@ Create Product Without Name Should Fail
 
 
 Create Product Without SKU Should Fail
+    [Tags]                                          product    negative
     ${timestamp}=                   Get Time        epoch
     ${product_name}=                Set Variable    Test Product ${timestamp}
     ${url_key}=                     Set Variable    test-product-${timestamp}
@@ -122,6 +131,7 @@ Create Product Without SKU Should Fail
     Save Product And Expect SKU Validation Error
 
 Create Product Without Price Should Fail
+    [Tags]                                          product    negative
     ${timestamp}=                   Get Time        epoch
     ${product_name}=                Set Variable    Test Product ${timestamp}
     ${sku}=                         Set Variable    TEST${timestamp}

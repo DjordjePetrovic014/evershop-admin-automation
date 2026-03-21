@@ -28,3 +28,7 @@ ${EDITING_HEADER}               xpath=//h1[contains(.,'Editing')]
 # Delete actions
 ${DELETE_BUTTON}                xpath=//button[contains(.,'Delete')]
 ${DELETE_CONFIRM_BUTTON}        xpath=(//button[contains(.,'Delete')])[last()]
+
+# Product link and check box
+${PRODUCT_LINK}                 xpath=//a[contains(.,'{{product_name}}')]
+${PRODUCT_CHECKBOX}             xpath=//td[contains(.,'{{product_name}}')]/ancestor::tr//span[@role='checkbox']

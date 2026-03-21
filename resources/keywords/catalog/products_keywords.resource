@@ -1,112 +1,111 @@
 *** Settings ***
+Library    String
+
 Resource    ../../page_objects/catalog/products_page.resource
 Resource    ../common/web_common.resource
 
 *** Keywords ***
 Open Products Page
-    Click Element                   ${PRODUCTS_MENU}
-    Wait Until Page Contains        Create a new product        10s
+    [Documentation]                     Navigates to products page from admin catalog menu.
+    Click Element Wrapper               ${PRODUCTS_MENU}
+    Wait Until Page Contains Wrapper    Create a new product        10s
 
 Open New Product Form
-    Wait Until Element Is Visible    ${NEW_PRODUCT_BUTTON}      10s
-    Click Element                    ${NEW_PRODUCT_BUTTON}
-    Wait Until Page Contains         Product Name               10s
+    [Documentation]                      Opens form for creating a new product.
+    Wait Until Visible Wrapper           ${NEW_PRODUCT_BUTTON}      10s
+    Click Element Wrapper                ${NEW_PRODUCT_BUTTON}
+    Wait Until Page Contains Wrapper     Product Name               10s
 
 Fill Required Product Information
-    [Arguments]                     ${product_name}    ${sku}    ${price}    ${url_key}
-    Clear Element Text              ${PRODUCT_NAME_INPUT}
-    Input Text                      ${PRODUCT_NAME_INPUT}       ${product_name}
+    [Documentation]                     Fills all mandatory fields required to create a product.
+    [Arguments]                         ${product_name}    ${sku}    ${price}    ${url_key}
+    Clear And Input Text Wrapper        ${PRODUCT_NAME_INPUT}       ${product_name}
 
-    Clear Element Text              ${SKU_INPUT}
-    Input Text                      ${SKU_INPUT}                ${sku}
+    Clear And Input Text Wrapper        ${SKU_INPUT}                ${sku}
 
-    Clear Element Text              ${PRICE_INPUT}
-    Input Text                      ${PRICE_INPUT}              ${price}
+    Clear And Input Text Wrapper        ${PRICE_INPUT}              ${price}
 
-    Click Element                   ${TAX_CLASS_DROPDOWN}
-    Wait Until Element Is Visible   ${TAXABLE_GOODS_OPTION}    10s
-    Click Element                   ${TAXABLE_GOODS_OPTION}
+    Click Element Wrapper               ${TAX_CLASS_DROPDOWN}
+    Wait Until Visible Wrapper          ${TAXABLE_GOODS_OPTION}    10s
+    Click Element Wrapper               ${TAXABLE_GOODS_OPTION}
 
-    Click Element                   ${STATUS_ENABLED}
-    Click Element                   ${VISIBILITY_CATALOG_SEARCH}
+    Click Element Wrapper               ${STATUS_ENABLED}
+    Click Element Wrapper               ${VISIBILITY_CATALOG_SEARCH}
 
-    Click Element                   ${MANAGE_STOCK_YES}
-    Click Element                   ${IN_STOCK_OPTION}
+    Click Element Wrapper               ${MANAGE_STOCK_YES}
+    Click Element Wrapper               ${IN_STOCK_OPTION}
 
-    Clear Element Text              ${QTY_INPUT}
-    Input Text                      ${QTY_INPUT}            10
+    Clear And Input Text Wrapper        ${QTY_INPUT}            10
 
+    Clear And Input Text Wrapper        ${WEIGHT_INPUT}          1
 
-    Clear Element Text              ${WEIGHT_INPUT}
-    Input Text                      ${WEIGHT_INPUT}          1
+    Clear And Input Text Wrapper        ${URL_KEY_INPUT}        ${url_key}
 
-    Clear Element Text              ${URL_KEY_INPUT}
-    Input Text                      ${URL_KEY_INPUT}        ${url_key}
-
-    Clear Element Text              ${META_TITLE_INPUT}
-    Input Text                      ${META_TITLE_INPUT}     ${product_name}
+    Clear And Input Text Wrapper        ${META_TITLE_INPUT}     ${product_name}
 
 Update Product Price
     [Arguments]    ${new_price}
-    Clear Element Text    ${PRICE_INPUT}
-    Input Text            ${PRICE_INPUT}    ${new_price}
+    Clear And Input Text Wrapper        ${PRICE_INPUT}    ${new_price}
 
 Save Product
-    Scroll Element Into View        ${SAVE_BUTTON}
-    Click Element                   ${SAVE_BUTTON}
+    Scroll Element Into View            ${SAVE_BUTTON}
+    Click Element Wrapper               ${SAVE_BUTTON}
 
-    Wait Until Element Is Visible   ${EDITING_HEADER}       10s
+    Wait Until Visible Wrapper          ${EDITING_HEADER}       10s
 
-    Scroll Element Into View        ${SAVE_BUTTON}
-    Click Element                   ${SAVE_BUTTON}
+    Scroll Element Into View            ${SAVE_BUTTON}
+    Click Element Wrapper               ${SAVE_BUTTON}
 
 Save Product And Expect Duplicate SKU Error
-    Scroll Element Into View        ${SAVE_BUTTON}
-    Click Element                   ${SAVE_BUTTON}
-    Wait Until Page Contains        duplicate key value violates unique constraint "PRODUCT_SKU_UNIQUE"    10s
+    Scroll Element Into View            ${SAVE_BUTTON}
+    Click Element Wrapper               ${SAVE_BUTTON}
+    Wait Until Page Contains Wrapper    duplicate key value violates unique constraint "PRODUCT_SKU_UNIQUE"    10s
 
 Search And Open Product
-    [Arguments]                     ${product_name}
-    Input Text                      ${SEARCH_INPUT}    ${product_name}
-    Wait Until Element Is Visible   xpath=//a[contains(.,'${product_name}')]    10s
-    Click Element                   xpath=//a[contains(.,'${product_name}')]
+    [Documentation]                         Searches product by name and opens product details page.
+    [Arguments]                             ${product_name}
+    Input Text Wrapper                      ${SEARCH_INPUT}    ${product_name}
+    ${product_link}=    Replace String      ${PRODUCT_LINK}    {{product_name}}    ${product_name}
+    Wait Until Visible Wrapper              ${product_link}    10s
+    Click Element Wrapper                   ${product_link}
 
 Save Product And Expect Name Validation Error
-    Scroll Element Into View        ${SAVE_BUTTON}
-    Click Element                   ${SAVE_BUTTON}
-    Wait Until Page Contains        Product Name is required    10s
+    Scroll Element Into View            ${SAVE_BUTTON}
+    Click Element Wrapper               ${SAVE_BUTTON}
+    Wait Until Page Contains Wrapper    Product Name is required    10s
 
 Save Product And Expect SKU Validation Error
-    Scroll Element Into View        ${SAVE_BUTTON}
-    Click Element                   ${SAVE_BUTTON}
-    Wait Until Page Contains        SKU is required    10s
+    Scroll Element Into View            ${SAVE_BUTTON}
+    Click Element Wrapper               ${SAVE_BUTTON}
+    Wait Until Page Contains Wrapper    SKU is required    10s
 
 Save Product And Expect Price Validation Error
-    Scroll Element Into View        ${SAVE_BUTTON}
-    Click Element                   ${SAVE_BUTTON}
-    Wait Until Page Contains        Price is required   10s
+    Scroll Element Into View            ${SAVE_BUTTON}
+    Click Element Wrapper               ${SAVE_BUTTON}
+    Wait Until Page Contains Wrapper    Price is required   10s
 
 Save Product And Expect Success Message
-    Scroll Element Into View        ${SAVE_BUTTON}
-    Click Element                   ${SAVE_BUTTON}
-    Wait Until Page Contains        Product updated successfully    10s
+    Scroll Element Into View            ${SAVE_BUTTON}
+    Click Element Wrapper               ${SAVE_BUTTON}
+    Wait Until Page Contains Wrapper    Product updated successfully    10s
 
 Product Should Be Visible In List
     [Arguments]    ${product_name}
-    Wait Until Page Contains    ${product_name}    10s
+    Wait Until Page Contains Wrapper    ${product_name}    10s
 
 Select Product Checkbox
     [Arguments]    ${product_name}
-    Click Element    xpath=//td[contains(.,'${product_name}')]/ancestor::tr//span[@role='checkbox']
+    ${product_checkbox}=                Replace String    ${PRODUCT_CHECKBOX}    {{product_name}}    ${product_name}
+    Click Element Wrapper               ${product_checkbox}
 
 Click Delete Button
-    Click Element                   ${DELETE_BUTTON}
+    Click Element Wrapper               ${DELETE_BUTTON}
 
 Confirm Product Deletion
-    Wait Until Element Is Visible    ${DELETE_CONFIRM_BUTTON}    10s
-    Click Element                    ${DELETE_CONFIRM_BUTTON}
+    Wait Until Visible Wrapper          ${DELETE_CONFIRM_BUTTON}    10s
+    Click Element Wrapper               ${DELETE_CONFIRM_BUTTON}
 
 
 Product Should Not Be Visible In List
-    [Arguments]                         ${product_name}
-    Wait Until Page Does Not Contain    ${product_name}    10s
+    [Arguments]                                     ${product_name}
+    Wait Until Page Does Not Contain Wrapper        ${product_name}    10s
