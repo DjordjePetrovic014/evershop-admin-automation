@@ -1,11 +1,6 @@
 *** Settings ***
-Library    SeleniumLibrary
-
-*** Variables ***
-${CATEGORIES_MENU}                  xpath=//a[contains(., "Categories")]
-${NEW_CATEGORY_BUTTON}              xpath=//button[contains(., "New Category")]
-${CATEGORY_TITLE}                   Categories
-${NEW_CATEGORY_FORM_TITLE}          Create a new category
+Resource    ../../page_objects/catalog/categories_page.resource
+Resource    ../common/web_common.resource
 
 *** Keywords ***
 Open Categories Page
