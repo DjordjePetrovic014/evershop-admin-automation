@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../../resources/keywords/admin/login_keywords.resource
-Resource    ../../pages/catalog/products_page.robot
+Resource    ../../resources/keywords/catalog/products_keywords.resource
 
 # RUN TEST
 # robot -d results tests/catalog/products_tests.robot
