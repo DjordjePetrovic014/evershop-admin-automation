@@ -14,6 +14,7 @@ Open New Category Form
     Wait Until Page Contains Wrapper    ${NEW_CATEGORY_FORM_TITLE}
 
 Fill Category Form
+    [Documentation]                     Fills category form with provided category data.
     [Arguments]    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}
     Input Text     ${CATEGORY_NAME_INPUT}       ${category_name}
     Input Text     ${URL_KEY_INPUT}             ${url_key}
@@ -23,7 +24,7 @@ Fill Category Form
 Save Category
     [Documentation]                     Saves category and waits for success message.
     Click Element Wrapper               ${SAVE_CATEGORY_BUTTON}
-    Wait Until Page Contains Wrapper    ${NEW_CATEGORY_FORM_TITLE}
+    Wait Until Page Contains Wrapper    ${CATEGORY_CREATED_SUCCESS_MESSAGE}
 
 Create Category
     [Documentation]    Creates a new category with provided data through admin UI.
@@ -48,3 +49,23 @@ Category Should Appear In Categories List
     [Arguments]    ${category_name}
     Open Categories Page
     Wait Until Page Contains Wrapper    ${category_name}
+
+Select First Category In List
+    [Documentation]                  Selects the first category row in categories list.
+    Click Element Wrapper            ${FIRST_CATEGORY_CHECKBOX}
+
+Click Delete Category Button
+    [Documentation]                  Clicks delete button for selected category rows.
+    Wait Until Element Is Visible    ${DELETE_CATEGORY_BUTTON}
+    Click Element Wrapper            ${DELETE_CATEGORY_BUTTON}
+
+Confirm Category Deletion
+    [Documentation]                  Confirms category deletion in confirmation modal.
+    Wait Until Element Is Visible    ${CONFIRM_DELETE_BUTTON}
+    Click Element Wrapper            ${CONFIRM_DELETE_BUTTON}
+
+Category Should Not Appear In Categories List
+    [Documentation]    Verifies that deleted category is no longer visible in categories list.
+    [Arguments]    ${category_name}
+    Open Categories Page
+    Wait Until Page Does Not Contain    ${category_name}    10s

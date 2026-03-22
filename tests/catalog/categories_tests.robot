@@ -28,3 +28,16 @@ Create a New Category Successfully
     Create Category    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}
     Category Should Appear In Categories List    ${category_name}
 
+Create And Delete Category Successfully
+    [Tags]                          category    create    delete    regression
+    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}=    Generate Unique Category Data
+
+    Create Category    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}
+    Category Should Appear In Categories List    ${category_name}
+
+    Select First Category In List
+    Click Delete Category Button
+    Confirm Category Deletion
+
+    Category Should Not Appear In Categories List    ${category_name}
+
