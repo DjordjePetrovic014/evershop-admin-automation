@@ -21,3 +21,10 @@ Open New Category Form Successfully
     [Tags]                          category    create
     Open Categories Page
     Open New Category Form
+
+Create a New Category Successfully
+    [Tags]                          smoke    category    create
+    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}=    Generate Unique Category Data
+    Create Category    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}
+    Category Should Appear In Categories List    ${category_name}
+

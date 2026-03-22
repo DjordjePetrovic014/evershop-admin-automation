@@ -12,3 +12,39 @@ Open New Category Form
     [Documentation]                     Opens form for creating a new category.
     Click Element Wrapper               ${NEW_CATEGORY_BUTTON}
     Wait Until Page Contains Wrapper    ${NEW_CATEGORY_FORM_TITLE}
+
+Fill Category Form
+    [Arguments]    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}
+    Input Text     ${CATEGORY_NAME_INPUT}       ${category_name}
+    Input Text     ${URL_KEY_INPUT}             ${url_key}
+    Input Text     ${META_TITLE_INPUT}          ${meta_title}
+    Input Text     ${META_DESCRIPTION_INPUT}    ${meta_description}
+
+Save Category
+    [Documentation]                     Saves category and waits for success message.
+    Click Element Wrapper               ${SAVE_CATEGORY_BUTTON}
+    Wait Until Page Contains Wrapper    ${NEW_CATEGORY_FORM_TITLE}
+
+Create Category
+    [Documentation]    Creates a new category with provided data through admin UI.
+    [Arguments]    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}
+    Open Categories Page
+    Open New Category Form
+    Fill Category Form    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}
+    Save Category
+
+Generate Unique Category Data
+    [Documentation]         Generates unique category data using timestamp to avoid duplicates.
+    ${timestamp}=           Get Time        epoch
+    ${category_name}=       Set Variable    Test Category ${timestamp}
+    ${url_key}=             Set Variable    test-category-${timestamp}
+    ${meta_title}=          Set Variable    Meta Title ${timestamp}
+    ${meta_description}=    Set Variable    Meta Description ${timestamp}
+
+    RETURN    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}
+
+Category Should Appear In Categories List
+    [Documentation]    Verifies that created category is visible in categories list.
+    [Arguments]    ${category_name}
+    Open Categories Page
+    Wait Until Page Contains Wrapper    ${category_name}
