@@ -2,7 +2,7 @@
 Resource    ../resources/keywords/admin/login_keywords.resource
 
 Test Setup       Open Admin Login Page
-Test Teardown    Close Browser
+Test Teardown    Close all active browsers
 
 # Run *** Test Cases ***
 # robot -d results tests/admin_login_tests.robot
@@ -18,7 +18,8 @@ ${SHORT_PASSWORD}           1234
 
 *** Test Cases ***
 Valid Admin Login And Logout
-    [Tags]            smoke    login    positive
+    [Documentation]    This test tries to perform login with valid credentials
+    [Tags]   smoke    login    positive
     Login As Admin    ${VALID_EMAIL}    ${VALID_PASSWORD}
     Logout Admin User
 
@@ -56,3 +57,8 @@ Invalid Admin Login With Invalid Email Format
     [Tags]                      login    negative
     Login With Credentials      ${INVALID_EMAIL_FORMAT}    ${VALID_PASSWORD}
     Wait Until Page Contains    Please enter a valid email address
+
+#TODO Move variable to page object ( check the test structure in my project for web/web_tests/access/login_tests.robot test)
+#TODO Add Documentation tag to all tests
+#TODO Set Test Setup to use Open Admin Login Page only
+#TODO Implement Faker library

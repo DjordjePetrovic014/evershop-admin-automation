@@ -7,13 +7,14 @@ Resource    ../common/web_common.resource
 *** Keywords ***
 Open Products Page
     [Documentation]                     Navigates to products page from admin catalog menu.
-    Click Element Wrapper               ${PRODUCTS_MENU}
+    Click on products menu
     Wait Until Page Contains Wrapper    Create a new product        10s
 
 Open New Product Form
     [Documentation]                      Opens form for creating a new product.
     Wait Until Visible Wrapper           ${NEW_PRODUCT_BUTTON}      10s
-    Click Element Wrapper                ${NEW_PRODUCT_BUTTON}
+
+    Click on new products button
     Wait Until Page Contains Wrapper     Product Name               10s
 
 Fill Required Product Information
