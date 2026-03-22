@@ -22,4 +22,4 @@ ${CATEGORY_CREATED_SUCCESS_TOAST}       xpath=//*[contains(normalize-space(.),'C
 ${CATEGORY_CREATED_SUCCESS_MESSAGE}     Category created successfully!
 
 # --- Table ---
-${FIRST_CATEGORY_CHECKBOX}          xpath=(//tr[@data-slot='table-row'])[1]//span[@role='checkbox']
+${FIRST_CATEGORY_CHECKBOX}              xpath=(//span[@role='checkbox'])[2]
