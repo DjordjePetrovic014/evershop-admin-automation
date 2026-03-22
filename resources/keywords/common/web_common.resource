@@ -33,3 +33,9 @@ Wait Until Page Contains Wrapper
 Wait Until Page Does Not Contain Wrapper
     [Arguments]    ${text}    ${timeout}=10s
     Wait Until Page Does Not Contain    ${text}    ${timeout}
+
+Close all active browsers
+    [Documentation]    Used in teardown method to close all active browsers/windows/cookies
+    Close All Browsers
+    Close Window
+    Delete All Cookies

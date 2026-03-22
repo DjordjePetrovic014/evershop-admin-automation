@@ -1,3 +1,6 @@
+*** Settings ***
+Resource    resources/keywords/common/web_common.resource
+
 *** Variables ***
 # Navigation
 ${PRODUCTS_MENU}                xpath=//a[contains(., "Products")]
@@ -32,3 +35,15 @@ ${DELETE_CONFIRM_BUTTON}        xpath=(//button[contains(.,'Delete')])[last()]
 # Product link and check box
 ${PRODUCT_LINK}                 xpath=//a[contains(.,'{{product_name}}')]
 ${PRODUCT_CHECKBOX}             xpath=//td[contains(.,'{{product_name}}')]/ancestor::tr//span[@role='checkbox']
+${ERROR_TEXT}                   Create a new product
+
+
+*** Keywords ***
+Click on products menu
+    Click Element Wrapper  ${PRODUCTS_MENU}
+    
+Verify that create a new product page is visible
+    Wait Until Page Contains Wrapper  ${ERROR_TEXT}
+
+Click on new products button
+    Click Element Wrapper  ${NEW_PRODUCT_BUTTON}
