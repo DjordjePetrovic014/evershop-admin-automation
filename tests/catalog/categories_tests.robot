@@ -14,17 +14,20 @@ ${VALID_PASSWORD}    test1234
 
 *** Test Cases ***
 Open Categories Page Successfully
+    [Documentation]                 Verifies that admin can successfully open the categories page.
     [Tags]                          smoke    category
     Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     Open Categories Page
 
 Open New Category Form Successfully
+     [Documentation]                Verifies that admin can open the new category creation form.
     [Tags]                          category    create
     Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     Open Categories Page
     Open New Category Form
 
 Create a New Category Successfully
+    [Documentation]                 Verifies that admin can create a new category with valid data.
     [Tags]                          smoke    category    create
     Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
 
@@ -34,6 +37,7 @@ Create a New Category Successfully
     Category Should Appear In Categories List    ${category_name}
 
 Create And Delete Category Successfully
+    [Documentation]    Verifies that admin can create and then delete a category successfully.
     [Tags]                          category    create    delete    regression
     Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
 

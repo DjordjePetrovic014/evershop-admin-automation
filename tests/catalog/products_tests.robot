@@ -16,17 +16,20 @@ ${VALID_PASSWORD}    test1234
 
 # Positive / happy path tests
 Open Products Page Successfully
+    [Documentation]                     Verifies that admin can successfully open the products page.
     [Tags]                              smoke    product
     Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     Open Products Page
 
 Open New Product Form Successfully
+    [Documentation]                     Verifies that admin can open the new product creation form.
     [Tags]                              product    create
     Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     Open Products Page
     Open New Product Form
 
 Create A New Product Successfully
+    [Documentation]                     Verifies that admin can create a new product with valid data.
     [Tags]                              product    create
     Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=       Get Time        epoch
@@ -37,7 +40,8 @@ Create A New Product Successfully
     Save Product
 
 Search Product Should Return Created Product
-    [Tags]                              product    search
+    [Documentation]                 Verifies that a created product can be found using search functionality.
+    [Tags]                          product    search
     Login As Admin                  ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=                   Get Time        epoch
     ${product_name}=                Set Variable    Test Product ${timestamp}
@@ -56,6 +60,7 @@ Search Product Should Return Created Product
     Wait Until Page Contains         ${product_name}    10s
 
 Edit Product Price Successfully
+    [Documentation]                     Verifies that admin can update the product price successfully.
     [Tags]                              product    update
     Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=       Get Time        epoch
@@ -76,6 +81,7 @@ Edit Product Price Successfully
     Save Product And Expect Success Message
 
 Create And Delete Product Successfully
+    [Documentation]                     Verifies that admin can create and then delete a product successfully.
     [Tags]                              product    delete    crud
     Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=       Get Time        epoch
@@ -97,6 +103,7 @@ Create And Delete Product Successfully
 
 # Negative / validation tests
 Create Product With Duplicate SKU Should Fail
+    [Documentation]                      Verifies that product creation fails when duplicate SKU is used.
     [Tags]                               product    negative
     Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=        Get Time        epoch
@@ -113,6 +120,7 @@ Create Product With Duplicate SKU Should Fail
     Save Product And Expect Duplicate SKU Error
 
 Create Product Without Name Should Fail
+    [Documentation]                 Verifies that product creation fails when name is missing.
     [Tags]                                          product    negative
     Login As Admin                  ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=                   Get Time        epoch
@@ -127,6 +135,7 @@ Create Product Without Name Should Fail
 
 
 Create Product Without SKU Should Fail
+    [Documentation]                   Verifies that product creation fails when SKU is missing.
     [Tags]                                          product    negative
     Login As Admin    ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=                   Get Time        epoch
@@ -140,6 +149,7 @@ Create Product Without SKU Should Fail
     Save Product And Expect SKU Validation Error
 
 Create Product Without Price Should Fail
+    [Documentation]                     Verifies that product creation fails when price is missing.
     [Tags]                                          product    negative
     Login As Admin                  ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=                   Get Time        epoch
