@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../../page_objects/catalog/categories_page.resource
-Resource    ../common/web_common.resource
+Resource    ../../keywords/common/web_common.resource
 
 *** Keywords ***
 Open Categories Page

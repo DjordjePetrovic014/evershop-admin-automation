@@ -5,8 +5,8 @@ Resource    ../../resources/keywords/catalog/products_keywords.resource
 # RUN TEST
 # robot -d results tests/catalog/products_tests.robot
 
-Test Setup    Login As Admin    ${VALID_EMAIL}    ${VALID_PASSWORD}
-Test Teardown    Close Browser
+Test Setup       Open Admin Login Page
+Test Teardown    Close all active browsers
 
 *** Variables ***
 ${VALID_EMAIL}       djolevukas@gmail.com
@@ -17,16 +17,20 @@ ${VALID_PASSWORD}    test1234
 # Positive / happy path tests
 Open Products Page Successfully
     [Tags]                              smoke    product
+    Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     Open Products Page
 
 Open New Product Form Successfully
     [Tags]                              product    create
+    Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     Open Products Page
     Open New Product Form
 
 Create A New Product Successfully
     [Tags]                              product    create
+    Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=       Get Time        epoch
+
     Open Products Page
     Open New Product Form
     Fill Required Product Information             Test Product ${timestamp}    TEST${timestamp}    50    test-product-${timestamp}
@@ -34,8 +38,8 @@ Create A New Product Successfully
 
 Search Product Should Return Created Product
     [Tags]                              product    search
+    Login As Admin                  ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=                   Get Time        epoch
-
     ${product_name}=                Set Variable    Test Product ${timestamp}
     ${sku}=                         Set Variable    TEST${timestamp}
     ${url_key}=                     Set Variable    test-product-${timestamp}
@@ -53,12 +57,12 @@ Search Product Should Return Created Product
 
 Edit Product Price Successfully
     [Tags]                              product    update
+    Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=       Get Time        epoch
     ${product_name}=    Set Variable    Test Product ${timestamp}
     ${sku}=             Set Variable    TEST${timestamp}
     ${url_key}=         Set Variable    test-product-${timestamp}
     ${updated_price}=   Set Variable    80
-
     Open Products Page
     Open New Product Form
     Fill Required Product Information    ${product_name}    ${sku}    50    ${url_key}
@@ -73,6 +77,7 @@ Edit Product Price Successfully
 
 Create And Delete Product Successfully
     [Tags]                              product    delete    crud
+    Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=       Get Time        epoch
     ${product_name}=    Set Variable    Test Product ${timestamp}
     ${sku}=             Set Variable    TEST${timestamp}
@@ -93,6 +98,7 @@ Create And Delete Product Successfully
 # Negative / validation tests
 Create Product With Duplicate SKU Should Fail
     [Tags]                               product    negative
+    Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=        Get Time        epoch
     ${duplicate_sku}=    Set Variable    TEST${timestamp}
 
@@ -108,6 +114,7 @@ Create Product With Duplicate SKU Should Fail
 
 Create Product Without Name Should Fail
     [Tags]                                          product    negative
+    Login As Admin                  ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=                   Get Time        epoch
     ${sku}=                         Set Variable    TEST${timestamp}
     ${url_key}=                     Set Variable    test-product-${timestamp}
@@ -121,9 +128,11 @@ Create Product Without Name Should Fail
 
 Create Product Without SKU Should Fail
     [Tags]                                          product    negative
+    Login As Admin    ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=                   Get Time        epoch
     ${product_name}=                Set Variable    Test Product ${timestamp}
     ${url_key}=                     Set Variable    test-product-${timestamp}
+
     Open Products Page
     Open New Product Form
 
@@ -132,6 +141,7 @@ Create Product Without SKU Should Fail
 
 Create Product Without Price Should Fail
     [Tags]                                          product    negative
+    Login As Admin                  ${VALID_EMAIL}    ${VALID_PASSWORD}
     ${timestamp}=                   Get Time        epoch
     ${product_name}=                Set Variable    Test Product ${timestamp}
     ${sku}=                         Set Variable    TEST${timestamp}

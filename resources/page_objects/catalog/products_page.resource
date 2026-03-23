@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    resources/keywords/common/web_common.resource
+Resource    ../../keywords/common/web_common.resource
 
 *** Variables ***
 # Navigation

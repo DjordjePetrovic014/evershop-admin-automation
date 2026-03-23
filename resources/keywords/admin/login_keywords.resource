@@ -36,7 +36,6 @@ Admin Dashboard Should Be Visible
 Login As Admin
     [Documentation]                  Performs full login flow and verifies dashboard is visible.
     [Arguments]                      ${email}    ${password}
-    Open Admin Login Page
     Login With Credentials           ${email}    ${password}
     Admin Dashboard Should Be Visible
 
