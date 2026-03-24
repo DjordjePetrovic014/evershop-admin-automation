@@ -63,7 +63,7 @@ Invalid Admin Login With Invalid Email Format
     Login With Credentials      ${INVALID_EMAIL_FORMAT}    ${VALID_PASSWORD}
     Wait Until Page Contains    Please enter a valid email address
 
-#TODO Move variable to page object ( check the test structure in my project for web/web_tests/access/login_tests.robot test)
+#TODO COMPLETED: Move variable to page object ( check the test structure in my project for web/web_tests/access/login_tests.robot test)
 #TODO COMPLETED: Add Documentation tag to all tests
 #TODO COMPLETED: Set Test Setup to use Open Admin Login Page only
 #TODO COMPLETED: Implement Faker library
