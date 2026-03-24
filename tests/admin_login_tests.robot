@@ -68,4 +68,4 @@ Invalid Admin Login With Invalid Email Format
 #TODO Move variable to page object ( check the test structure in my project for web/web_tests/access/login_tests.robot test)
 #TODO COMPLETED: Add Documentation tag to all tests
 #TODO COMPLETED: Set Test Setup to use Open Admin Login Page only
-#TODO Implement Faker library
+#TODO COMPLETED: Implement Faker library

@@ -1,4 +1,5 @@
 *** Settings ***
+Library     FakerLibrary
 Resource    ../../page_objects/catalog/categories_page.resource
 Resource    ../../keywords/common/web_common.resource
 
@@ -35,12 +36,16 @@ Create Category
     Save Category
 
 Generate Unique Category Data
-    [Documentation]         Generates unique category data using timestamp to avoid duplicates.
-    ${timestamp}=           Get Time        epoch
-    ${category_name}=       Set Variable    Test Category ${timestamp}
-    ${url_key}=             Set Variable    test-category-${timestamp}
-    ${meta_title}=          Set Variable    Meta Title ${timestamp}
-    ${meta_description}=    Set Variable    Meta Description ${timestamp}
+    [Documentation]    Generates unique category data using FakerLibrary and timestamp.
+    ${timestamp}=           Get Time    epoch
+    ${fake_word}=           Word
+    ${meta_title_fake}=     Sentence    nb_words=3
+    ${meta_desc_fake}=      Sentence    nb_words=6
+
+    ${category_name}=       Set Variable    ${fake_word}-${timestamp}
+    ${url_key}=             Set Variable    ${fake_word}-${timestamp}
+    ${meta_title}=          Set Variable    ${meta_title_fake}
+    ${meta_description}=    Set Variable    ${meta_desc_fake}
 
     RETURN    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}
 

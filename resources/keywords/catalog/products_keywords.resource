@@ -1,5 +1,6 @@
 *** Settings ***
-Library    String
+Library     String
+Library     FakerLibrary
 
 Resource    ../../page_objects/catalog/products_page.resource
 Resource    ../common/web_common.resource
@@ -43,6 +44,18 @@ Fill Required Product Information
     Clear And Input Text Wrapper        ${URL_KEY_INPUT}        ${url_key}
 
     Clear And Input Text Wrapper        ${META_TITLE_INPUT}     ${product_name}
+
+Generate Unique Product Data
+    [Documentation]    Generates unique product data using FakerLibrary and timestamp.
+    ${timestamp}=       Get Time    epoch
+    ${fake_word}=       Word
+
+    ${product_name}=    Set Variable    ${fake_word}-${timestamp}
+    ${sku}=             Set Variable    TEST${timestamp}
+    ${price}=           Set Variable    50
+    ${url_key}=         Set Variable    ${fake_word}-${timestamp}
+
+    RETURN    ${product_name}    ${sku}    ${price}    ${url_key}
 
 Update Product Price
     [Arguments]    ${new_price}
