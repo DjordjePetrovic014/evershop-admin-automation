@@ -8,10 +8,8 @@ Test Teardown    Close all active browsers
 # robot -d results tests/admin_login_tests.robot
 
 *** Variables ***
-${VALID_EMAIL}              djolevukas@gmail.com
 ${INVALID_EMAIL}            wrong@email.com
 ${INVALID_EMAIL_FORMAT}     djolevukas
-${VALID_PASSWORD}           test1234
 ${INVALID_PASSWORD}         wrong_password
 ${SHORT_PASSWORD}           1234
 

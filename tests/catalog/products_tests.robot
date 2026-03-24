@@ -8,10 +8,6 @@ Resource    ../../resources/keywords/catalog/products_keywords.resource
 Test Setup       Open Admin Login Page
 Test Teardown    Close all active browsers
 
-*** Variables ***
-${VALID_EMAIL}       djolevukas@gmail.com
-${VALID_PASSWORD}    test1234
-
 *** Test Cases ***
 
 # Positive / happy path tests

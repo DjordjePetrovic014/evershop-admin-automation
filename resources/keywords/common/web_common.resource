@@ -1,14 +1,24 @@
 *** Settings ***
+Documentation    Contains common reusable web interaction keywords used across all pages.
+
 Library    SeleniumLibrary
 
 *** Keywords ***
 
 Click Element Wrapper
+    [Documentation]    Clicks element using provided locator.
     [Arguments]    ${locator}
     Click Element    ${locator}
 
 Input Text Wrapper
+    [Documentation]    Inputs text into element using provided locator.
     [Arguments]    ${locator}    ${text}
+    Input Text    ${locator}    ${text}
+
+Input Text And Wait
+    [Documentation]    Waits for element and inputs text.
+    [Arguments]    ${locator}    ${text}
+    Wait Until Element Is Visible    ${locator}    10s
     Input Text    ${locator}    ${text}
 
 Wait Until Visible Wrapper
@@ -17,6 +27,7 @@ Wait Until Visible Wrapper
     Wait Until Element Is Visible    ${locator}    ${timeout}
 
 Clear Element Text Wrapper
+    [Documentation]    Clears text from input field.
     [Arguments]    ${locator}
     Clear Element Text    ${locator}
 
@@ -27,13 +38,26 @@ Clear And Input Text Wrapper
     Input Text Wrapper            ${locator}    ${text}
 
 Wait Until Page Contains Wrapper
+    [Documentation]    Waits until given text is visible on page.
     [Arguments]    ${text}    ${timeout}=10s
     Wait Until Page Contains    ${text}    ${timeout}
 
 Wait Until Page Does Not Contain Wrapper
+    [Documentation]    Waits until given text is no longer visible on page.
     [Arguments]    ${text}    ${timeout}=10s
     Wait Until Page Does Not Contain    ${text}    ${timeout}
 
 Close all active browsers
-    [Documentation]    Used in teardown method to close all active browsers
+    [Documentation]    Closes all active browser instances.
     Close All Browsers
+
+Scroll Into View Wrapper
+    [Documentation]    Scrolls element into view.
+    [Arguments]    ${locator}
+    Scroll Element Into View    ${locator}
+
+Click Element And Wait
+    [Documentation]    Waits for element and clicks it.
+    [Arguments]    ${locator}
+    Wait Until Element Is Visible    ${locator}    10s
+    Click Element    ${locator}

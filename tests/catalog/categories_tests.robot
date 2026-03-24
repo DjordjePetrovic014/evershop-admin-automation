@@ -8,10 +8,6 @@ Resource    ../../resources/keywords/catalog/categories_keywords.resource
 Test Setup          Open Admin Login Page
 Test Teardown       Close all active browsers
 
-*** Variables ***
-${VALID_EMAIL}       djolevukas@gmail.com
-${VALID_PASSWORD}    test1234
-
 *** Test Cases ***
 Open Categories Page Successfully
     [Documentation]                 Verifies that admin can successfully open the categories page.

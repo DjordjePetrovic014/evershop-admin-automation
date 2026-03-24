@@ -1,125 +1,114 @@
 *** Settings ***
-Library     String
-Library     FakerLibrary
+Documentation    Contains reusable product-related workflows such as create, update, search and delete.
 
+Library    String
+Library    FakerLibrary
 Resource    ../../page_objects/catalog/products_page.resource
 Resource    ../common/web_common.resource
 
 *** Keywords ***
 Open Products Page
-    [Documentation]                     Navigates to products page from admin catalog menu.
+    [Documentation]    Opens products page from admin navigation.
     Click on products menu
-    Wait Until Page Contains Wrapper    Create a new product        10s
 
 Open New Product Form
-    [Documentation]                      Opens form for creating a new product.
-    Wait Until Visible Wrapper           ${NEW_PRODUCT_BUTTON}      10s
-
+    [Documentation]    Opens new product creation form.
     Click on new products button
-    Wait Until Page Contains Wrapper     Product Name               10s
+    Verify new product form is visible
 
 Fill Required Product Information
-    [Documentation]                     Fills all mandatory fields required to create a product.
-    [Arguments]                         ${product_name}    ${sku}    ${price}    ${url_key}
-    Clear And Input Text Wrapper        ${PRODUCT_NAME_INPUT}       ${product_name}
+    [Documentation]    Fills all required fields for product creation.
+    [Arguments]    ${product_name}    ${sku}    ${price}    ${url_key}
+    Enter product name    ${product_name}
+    Enter sku    ${sku}
+    Enter price    ${price}
 
-    Clear And Input Text Wrapper        ${SKU_INPUT}                ${sku}
+    Open tax class dropdown
+    Select taxable goods option
 
-    Clear And Input Text Wrapper        ${PRICE_INPUT}              ${price}
+    Enable product status
+    Select catalog search visibility
+    Enable manage stock
+    Select in stock option
 
-    Click Element Wrapper               ${TAX_CLASS_DROPDOWN}
-    Wait Until Visible Wrapper          ${TAXABLE_GOODS_OPTION}    10s
-    Click Element Wrapper               ${TAXABLE_GOODS_OPTION}
-
-    Click Element Wrapper               ${STATUS_ENABLED}
-    Click Element Wrapper               ${VISIBILITY_CATALOG_SEARCH}
-
-    Click Element Wrapper               ${MANAGE_STOCK_YES}
-    Click Element Wrapper               ${IN_STOCK_OPTION}
-
-    Clear And Input Text Wrapper        ${QTY_INPUT}            10
-
-    Clear And Input Text Wrapper        ${WEIGHT_INPUT}          1
-
-    Clear And Input Text Wrapper        ${URL_KEY_INPUT}        ${url_key}
-
-    Clear And Input Text Wrapper        ${META_TITLE_INPUT}     ${product_name}
+    Enter quantity    10
+    Enter weight    1
+    Enter url key    ${url_key}
+    Enter meta title    ${product_name}
 
 Generate Unique Product Data
     [Documentation]    Generates unique product data using FakerLibrary and timestamp.
-    ${timestamp}=       Get Time    epoch
-    ${fake_word}=       Word
+    ${timestamp}=    Get Time    epoch
+    ${fake_word}=    Word
 
     ${product_name}=    Set Variable    ${fake_word}-${timestamp}
-    ${sku}=             Set Variable    TEST${timestamp}
-    ${price}=           Set Variable    50
-    ${url_key}=         Set Variable    ${fake_word}-${timestamp}
+    ${sku}=    Set Variable    TEST${timestamp}
+    ${price}=    Set Variable    50
+    ${url_key}=    Set Variable    ${fake_word}-${timestamp}
 
     RETURN    ${product_name}    ${sku}    ${price}    ${url_key}
 
 Update Product Price
+    [Documentation]    Updates product price in product form.
     [Arguments]    ${new_price}
-    Clear And Input Text Wrapper        ${PRICE_INPUT}    ${new_price}
+    Enter price    ${new_price}
 
 Save Product
-    Scroll Element Into View            ${SAVE_BUTTON}
-    Click Element Wrapper               ${SAVE_BUTTON}
-
-    Wait Until Visible Wrapper          ${EDITING_HEADER}       10s
-
-    Scroll Element Into View            ${SAVE_BUTTON}
-    Click Element Wrapper               ${SAVE_BUTTON}
+    [Documentation]    Saves product and verifies editing page is displayed.
+    Click save button
+    Verify editing header is visible
+    Click save button
 
 Save Product And Expect Duplicate SKU Error
-    Scroll Element Into View            ${SAVE_BUTTON}
-    Click Element Wrapper               ${SAVE_BUTTON}
+    [Documentation]    Attempts to save product and verifies duplicate SKU error.
+    Click save button
     Wait Until Page Contains Wrapper    duplicate key value violates unique constraint "PRODUCT_SKU_UNIQUE"    10s
 
 Search And Open Product
-    [Documentation]                         Searches product by name and opens product details page.
-    [Arguments]                             ${product_name}
-    Input Text Wrapper                      ${SEARCH_INPUT}    ${product_name}
-    ${product_link}=    Replace String      ${PRODUCT_LINK}    {{product_name}}    ${product_name}
-    Wait Until Visible Wrapper              ${product_link}    10s
-    Click Element Wrapper                   ${product_link}
+    [Documentation]    Searches for product and opens product details page.
+    [Arguments]    ${product_name}
+    Search product    ${product_name}
+    Open product link by name    ${product_name}
 
 Save Product And Expect Name Validation Error
-    Scroll Element Into View            ${SAVE_BUTTON}
-    Click Element Wrapper               ${SAVE_BUTTON}
+    [Documentation]    Verifies validation error when product name is missing.
+    Click save button
     Wait Until Page Contains Wrapper    Product Name is required    10s
 
 Save Product And Expect SKU Validation Error
-    Scroll Element Into View            ${SAVE_BUTTON}
-    Click Element Wrapper               ${SAVE_BUTTON}
+    [Documentation]    Verifies validation error when SKU is missing.
+    Click save button
     Wait Until Page Contains Wrapper    SKU is required    10s
 
 Save Product And Expect Price Validation Error
-    Scroll Element Into View            ${SAVE_BUTTON}
-    Click Element Wrapper               ${SAVE_BUTTON}
-    Wait Until Page Contains Wrapper    Price is required   10s
+    [Documentation]    Verifies validation error when price is missing.
+    Click save button
+    Wait Until Page Contains Wrapper    Price is required    10s
 
 Save Product And Expect Success Message
-    Scroll Element Into View            ${SAVE_BUTTON}
-    Click Element Wrapper               ${SAVE_BUTTON}
+    [Documentation]    Verifies success message after saving product.
+    Click save button
     Wait Until Page Contains Wrapper    Product updated successfully    10s
 
 Product Should Be Visible In List
+    [Documentation]    Verifies that product is visible in products list.
     [Arguments]    ${product_name}
     Wait Until Page Contains Wrapper    ${product_name}    10s
 
 Select Product Checkbox
+    [Documentation]    Selects product checkbox by product name.
     [Arguments]    ${product_name}
-    ${product_checkbox}=                Replace String    ${PRODUCT_CHECKBOX}    {{product_name}}    ${product_name}
-    Click Element Wrapper               ${product_checkbox}
+    Select product checkbox by name    ${product_name}
 
 Click Delete Button
-    Click Element Wrapper               ${DELETE_BUTTON}
+    [Documentation]    Clicks delete button for selected product.
+    Click on delete button in products page
 
 Confirm Product Deletion
-    Wait Until Visible Wrapper          ${DELETE_CONFIRM_BUTTON}    10s
-    Click Element Wrapper               ${DELETE_CONFIRM_BUTTON}
-
+    [Documentation]    Confirms product deletion in modal dialog.
+    Click on delete confirm button in products page
 
 Product Should Not Be Visible In List
-    [Arguments]                                     ${product_name}
-    Wait Until Page Does Not Contain Wrapper        ${product_name}    10s
+    [Documentation]    Verifies that product is no longer visible in products list.
+    [Arguments]    ${product_name}
+    Wait Until Page Does Not Contain Wrapper    ${product_name}    10s
