@@ -9,7 +9,7 @@
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 This project contains automated UI tests for the EverShop Admin panel using **Robot Framework** and **SeleniumLibrary**.
 
@@ -17,7 +17,7 @@ The framework is designed using the **Page Object Model (POM)** to ensure clean 
 
 ---
 
-## 🧩 Project Structure
+## Project Structure
 
 The project follows a layered architecture:
 
