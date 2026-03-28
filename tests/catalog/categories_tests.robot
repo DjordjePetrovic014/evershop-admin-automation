@@ -34,7 +34,7 @@ Create a New Category Successfully
 
 Create And Delete Category Successfully
     [Documentation]    Verifies that admin can create and then delete a category successfully.
-    [Tags]                          category    create    delete    regression
+    [Tags]                          djole    category    create    delete    regression
     Login As Admin                      ${VALID_EMAIL}    ${VALID_PASSWORD}
 
     ${category_name}    ${url_key}    ${meta_title}    ${meta_description}=    Generate Unique Category Data

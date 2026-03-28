@@ -17,7 +17,7 @@ ${SHORT_PASSWORD}           1234
 *** Test Cases ***
 Valid Admin Login And Logout
     [Documentation]    Verifies that admin can successfully log in and log out using valid credentials.
-    [Tags]   smoke    login    positive
+    [Tags]   smoke    djole    login    positive
     Login As Admin    ${VALID_EMAIL}    ${VALID_PASSWORD}
     Logout Admin User
 
@@ -67,3 +67,8 @@ Invalid Admin Login With Invalid Email Format
 #TODO COMPLETED: Add Documentation tag to all tests
 #TODO COMPLETED: Set Test Setup to use Open Admin Login Page only
 #TODO COMPLETED: Implement Faker library
+
+# TODO 1: Implement Robocop in PyCharm.
+# TODO 2: Wrap all FakerLibrary usage into reusable custom keywords.
+# TODO 3: Replace manually defined invalid credentials variables with FakerLibrary-generated data.
+# TODO 4: Create long end-to-end tests for the Coupons section in Evershop, including positive and negative scenarios.

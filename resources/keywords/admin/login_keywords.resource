@@ -15,21 +15,21 @@ Open Admin Login Page
     Verify login page is visible
 
 Login With Credentials
-    [Documentation]    Enters login credentials and submits login form.
+    [Documentation]    Enters provided credentials and submits login form.
     [Arguments]    ${email}    ${password}
     Enter login email    ${email}
     Enter login password    ${password}
     Click on login button
-
-Admin Dashboard Should Be Visible
-    [Documentation]    Verifies that admin dashboard is displayed after login.
-    Wait Until Page Contains    Dashboard    10s
 
 Login As Admin
     [Documentation]    Performs full admin login flow and verifies dashboard.
     [Arguments]    ${email}    ${password}
     Login With Credentials    ${email}    ${password}
     Admin Dashboard Should Be Visible
+
+Admin Dashboard Should Be Visible
+    [Documentation]    Verifies that admin dashboard is displayed after login.
+    Wait Until Page Contains    Dashboard    10s
 
 Logout Admin User
     [Documentation]    Logs out admin user and verifies return to login page.
