@@ -5,6 +5,7 @@ Library    String
 Library    FakerLibrary
 Resource    ../../page_objects/catalog/products_page.resource
 Resource    ../common/web_common.resource
+Resource    ../common/faker_keywords.resource
 
 *** Keywords ***
 Open Products Page
@@ -38,13 +39,13 @@ Fill Required Product Information
 
 Generate Unique Product Data
     [Documentation]    Generates unique product data using FakerLibrary and timestamp.
-    ${timestamp}=    Get Time    epoch
-    ${fake_word}=    Word
+    ${timestamp}=       Get Time    epoch
+    ${unique_value}=    Generate Unique Fake Word With Timestamp
 
-    ${product_name}=    Set Variable    ${fake_word}-${timestamp}
-    ${sku}=    Set Variable    TEST${timestamp}
-    ${price}=    Set Variable    50
-    ${url_key}=    Set Variable    ${fake_word}-${timestamp}
+    ${product_name}=    Set Variable    ${unique_value}
+    ${sku}=             Set Variable    TEST${timestamp}
+    ${price}=           Set Variable    50
+    ${url_key}=         Set Variable    ${unique_value}
 
     RETURN    ${product_name}    ${sku}    ${price}    ${url_key}
 

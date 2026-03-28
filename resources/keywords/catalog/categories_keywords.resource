@@ -4,6 +4,7 @@ Documentation    Contains reusable category-related workflows such as create and
 Library     FakerLibrary
 Resource    ../../page_objects/catalog/categories_page.resource
 Resource    ../../keywords/common/web_common.resource
+Resource    ../common/faker_keywords.resource
 
 *** Keywords ***
 Open Categories Page
@@ -39,13 +40,12 @@ Create Category
 
 Generate Unique Category Data
     [Documentation]    Generates unique category data using FakerLibrary and timestamp.
-    ${timestamp}=           Get Time    epoch
-    ${fake_word}=           Word
-    ${meta_title_fake}=     Sentence    nb_words=3
-    ${meta_desc_fake}=      Sentence    nb_words=6
+    ${unique_value}=        Generate Unique Fake Word With Timestamp
+    ${meta_title_fake}=     Generate Fake Sentence    3
+    ${meta_desc_fake}=      Generate Fake Sentence    6
 
-    ${category_name}=       Set Variable    ${fake_word}-${timestamp}
-    ${url_key}=             Set Variable    ${fake_word}-${timestamp}
+    ${category_name}=       Set Variable    ${unique_value}
+    ${url_key}=             Set Variable    ${unique_value}
     ${meta_title}=          Set Variable    ${meta_title_fake}
     ${meta_description}=    Set Variable    ${meta_desc_fake}
 
