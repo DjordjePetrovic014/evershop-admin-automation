@@ -27,7 +27,7 @@ Fill Required Product Information
     Open tax class dropdown
     Select taxable goods option
 
-    Enable product status
+    #Enable product status    #Not required
     Select catalog search visibility
     Enable manage stock
     Select in stock option

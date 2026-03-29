@@ -21,7 +21,7 @@ ${META_TITLE_INPUT}             xpath=//input[@name='meta_title']
 # Dropdowns and options
 ${TAX_CLASS_DROPDOWN}           xpath=//button[@id='field-tax_class']
 ${TAXABLE_GOODS_OPTION}         xpath=//div[@role='option' and contains(.,'Taxable Goods')]
-${STATUS_ENABLED}               xpath=//label[contains(.,'Enabled')]
+${STATUS_ENABLED}               xpath=//label[@for="field-status-1"]
 ${VISIBILITY_CATALOG_SEARCH}    xpath=//label[contains(.,'Catalog, Search')]
 ${MANAGE_STOCK_YES}             xpath=//label[contains(.,'Yes')]
 ${IN_STOCK_OPTION}              xpath=//label[contains(.,'In Stock')]

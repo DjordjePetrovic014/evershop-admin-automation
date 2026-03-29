@@ -61,3 +61,15 @@ Click Element And Wait
     [Arguments]    ${locator}
     Wait Until Element Is Visible    ${locator}    10s
     Click Element    ${locator}
+
+Scroll Sidebar To Element
+    [Documentation]    Scrolls sidebar container until element is visible.
+    [Arguments]    ${container}    ${element}
+    ${container_el}=    Get WebElement    ${container}
+    ${target_el}=       Get WebElement    ${element}
+    Execute JavaScript    arguments[0].scrollTop = arguments[1].offsetTop;    ARGUMENTS    ${container_el}    ${target_el}
+
+Text Field Value Should Be Wrapper
+    [Documentation]    Verifies that text field value matches expected value.
+    [Arguments]    ${locator}    ${expected_value}
+    Textfield Value Should Be    ${locator}    ${expected_value}
