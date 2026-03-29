@@ -10,6 +10,18 @@ Click Element Wrapper
     [Arguments]    ${locator}
     Click Element    ${locator}
 
+Click Element And Wait
+    [Documentation]    Waits for element and clicks it.
+    [Arguments]    ${locator}
+    Click Visible Element Wrapper    ${locator}
+
+Click Visible Element Wrapper
+    [Arguments]    ${locator}    ${timeout}=10s
+    Wait Until Element Is Visible    ${locator}    ${timeout}
+    Scroll Element Into View         ${locator}
+    Sleep    0.5s
+    Click Element                    ${locator}
+
 Input Text Wrapper
     [Documentation]    Inputs text into element using provided locator.
     [Arguments]    ${locator}    ${text}
@@ -55,12 +67,6 @@ Scroll Into View Wrapper
     [Documentation]    Scrolls element into view.
     [Arguments]    ${locator}
     Scroll Element Into View    ${locator}
-
-Click Element And Wait
-    [Documentation]    Waits for element and clicks it.
-    [Arguments]    ${locator}
-    Wait Until Element Is Visible    ${locator}    10s
-    Click Element    ${locator}
 
 Scroll Sidebar To Element
     [Documentation]    Scrolls sidebar container until element is visible.

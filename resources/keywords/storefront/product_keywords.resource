@@ -12,10 +12,8 @@ Open Storefront Product Page
 
 Add Product To Cart
     [Documentation]    Adds storefront product to cart.
-    Wait Until Visible Wrapper    ${ADD_TO_CART_BUTTON}
-    Click Element Wrapper         ${ADD_TO_CART_BUTTON}
+    Click add to cart button
 
 Open Checkout From Mini Cart
     [Documentation]    Opens checkout page from mini cart.
-    Wait Until Visible Wrapper    ${CHECKOUT_BUTTON}
-    Click Element Wrapper         ${CHECKOUT_BUTTON}
+    Click checkout button from mini cart

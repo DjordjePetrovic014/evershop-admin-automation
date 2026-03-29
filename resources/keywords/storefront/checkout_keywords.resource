@@ -8,13 +8,13 @@ Resource    ../common/web_common.resource
 Enter Coupon Code On Checkout
     [Documentation]    Enters coupon code on checkout page.
     [Arguments]    ${coupon_code}
-    Clear And Input Text Wrapper    ${CHECKOUT_COUPON_INPUT}    ${coupon_code}
+    Enter checkout coupon code    ${coupon_code}
 
 Apply Coupon On Checkout
     [Documentation]    Applies coupon on checkout page.
-    Click Element Wrapper    ${APPLY_COUPON_BUTTON}
+    Click apply coupon button
 
 Verify Coupon Applied Successfully
     [Documentation]    Verifies that coupon is successfully applied on checkout page.
-    Wait Until Visible Wrapper    ${COUPON_APPLIED_SUCCESS_TOAST}
-    Wait Until Visible Wrapper    ${DISCOUNT_ROW}
+    Verify coupon applied success toast is visible
+    Verify discount row is visible

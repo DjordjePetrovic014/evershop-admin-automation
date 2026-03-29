@@ -10,7 +10,7 @@ Resource    ../common/faker_keywords.resource
 *** Keywords ***
 Open Products Page
     [Documentation]    Opens products page from admin navigation.
-    Click on products menu
+    Click Visible Element Wrapper    ${PRODUCTS_MENU}
 
 Open New Product Form
     [Documentation]    Opens new product creation form.
@@ -55,7 +55,7 @@ Update Product Price
     Enter price    ${new_price}
 
 Save Product
-    [Documentation]    Saves product and verifies editing page is displayed.
+    [Documentation]    Saves product and ensures editing page is loaded, then confirms save action.
     Click save button
     Verify editing header is visible
     Click save button
@@ -113,3 +113,12 @@ Product Should Not Be Visible In List
     [Documentation]    Verifies that product is no longer visible in products list.
     [Arguments]    ${product_name}
     Wait Until Page Does Not Contain Wrapper    ${product_name}    10s
+
+
+Create Product Successfully
+    [Documentation]    Creates product and verifies editing page is displayed.
+    [Arguments]    ${product_name}    ${sku}    ${price}    ${url_key}
+    Open Products Page
+    Open New Product Form
+    Fill Required Product Information    ${product_name}    ${sku}    ${price}    ${url_key}
+    Save Product

@@ -17,38 +17,37 @@ Generate Unique Coupon Data
     RETURN    ${coupon_code}    ${coupon_description}    ${discount_amount}
 
 Open Coupons Page
-    Scroll Sidebar To Element    ${SIDEBAR_CONTAINER}    ${COUPONS_MENU}
-    Sleep    1s
-    Wait Until Visible Wrapper    ${COUPONS_MENU}
-    Click Element Wrapper         ${COUPONS_MENU}
+    [Documentation]    Opens Coupons page from admin navigation.
+    Click on coupons menu
 
-Open New Coupon Form
-    [Documentation]    Opens the new coupon creation form.
-    Click Element Wrapper    ${NEW_COUPON_BUTTON}
+Open New Coupon Form From Coupons Page
+    [Documentation]    Opens new coupon form from Coupons page.
+    Click on new coupon button
+
+Open New Coupon Form From Sidebar
+    [Documentation]    Opens new coupon form from admin sidebar.
+    Click on new coupon link from sidebar
 
 Enter Coupon Code
-    [Documentation]    Enters coupon code into coupon code field.
     [Arguments]    ${coupon_code}
-    Clear And Input Text Wrapper    ${COUPON_CODE_INPUT}    ${coupon_code}
+    Enter coupon code in coupons page    ${coupon_code}
 
 Enter Coupon Description
-    [Documentation]    Enters coupon description.
     [Arguments]    ${coupon_description}
-    Clear And Input Text Wrapper    ${DESCRIPTION_INPUT}    ${coupon_description}
+    Enter coupon description in coupons page    ${coupon_description}
 
 Enter Discount Amount
-    [Documentation]    Enters discount amount.
     [Arguments]    ${discount_amount}
-    Clear And Input Text Wrapper    ${DISCOUNT_AMOUNT_INPUT}    ${discount_amount}
+    Enter discount amount in coupons page    ${discount_amount}
 
 Select Fixed Discount Type
     [Documentation]    Selects fixed discount type for coupon.
-    Click Element Wrapper    ${DISCOUNT_TYPE_FIXED}
+    Select fixed discount type in coupons page
     Wait Until Page Does Not Contain Wrapper    Discount type is required
 
 Save Coupon
     [Documentation]    Saves the coupon form.
-    Click Element Wrapper    ${SAVE_COUPON_BUTTON}
+    Click on save coupon button
 
 Fill Required Coupon Information
     [Documentation]    Fills all required coupon fields with valid data.
@@ -60,52 +59,50 @@ Fill Required Coupon Information
 
 Verify Required Coupon Field Errors Are Displayed
     [Documentation]    Verifies that all required field validation errors are displayed.
-    Wait Until Page Contains Wrapper    Coupon code is required
-    Wait Until Page Contains Wrapper    Description is required
-    Wait Until Page Contains Wrapper    Discount amount is required
-    Wait Until Page Contains Wrapper    Discount type is required
+    Verify required coupon field errors are visible in coupons page
 
 Verify Coupon Saved Successfully
     [Documentation]    Verifies that coupon saved successfully toast is displayed.
-    Wait Until Visible Wrapper    ${COUPON_SAVED_SUCCESS_TOAST}
+    Verify coupon saved success toast is visible in coupons page
 
 Verify Coupon Code Field Value
     [Documentation]    Verifies that coupon code field contains expected value.
     [Arguments]    ${coupon_code}
-    Wait Until Visible Wrapper    ${COUPON_EDIT_PAGE_TITLE}
-    Wait Until Visible Wrapper    ${COUPON_CODE_INPUT}
-    Text Field Value Should Be Wrapper    ${COUPON_CODE_INPUT}    ${coupon_code}
+    Verify coupon edit page is visible
+    Verify coupon code field value in coupons page    ${coupon_code}
 
 Return To Coupons List
     [Documentation]    Returns from editing page back to coupons list.
-    Wait Until Visible Wrapper    ${COUPON_EDIT_PAGE_TITLE}
-    Scroll Into View Wrapper      ${BACK_TO_COUPONS_LINK}
-    Wait Until Visible Wrapper    ${BACK_TO_COUPONS_LINK}
-    Sleep    1s
-    Click Element Wrapper         ${BACK_TO_COUPONS_LINK}
+    Verify coupon edit page is visible
+    Click on back to coupons link
 
 Search Coupon By Code
     [Documentation]    Searches coupon list by coupon code.
     [Arguments]    ${coupon_code}
-    Clear And Input Text Wrapper    ${COUPON_SEARCH_INPUT}    ${coupon_code}
+    Search coupon by code in coupons page    ${coupon_code}
 
 Verify Coupon Appears In Search Results
     [Documentation]    Verifies that searched coupon appears in coupons table.
     [Arguments]    ${coupon_code}
-    Wait Until Page Contains Wrapper    ${coupon_code}
+    Verify coupon appears in search results in coupons page    ${coupon_code}
 
 Verify Duplicate Coupon Error Is Displayed
     [Documentation]    Verifies that duplicate coupon code error toast is displayed.
-    Wait Until Visible Wrapper    ${COUPON_DUPLICATE_ERROR_TOAST}
+    Verify duplicate coupon error toast is visible in coupons page
 
 Verify Discount Amount Field Value
     [Documentation]    Verifies that discount amount field contains expected value.
     [Arguments]    ${discount_amount}
-    Wait Until Visible Wrapper    ${DISCOUNT_AMOUNT_INPUT}
-    Text Field Value Should Be Wrapper    ${DISCOUNT_AMOUNT_INPUT}    ${discount_amount}
+    Verify discount amount field value in coupons page    ${discount_amount}
 
-Open New Coupon Form From Sidebar
-    [Documentation]    Opens new coupon form from admin sidebar.
-    Wait Until Visible Wrapper    ${SIDEBAR_NEW_COUPON_LINK}
-    Click Element Wrapper         ${SIDEBAR_NEW_COUPON_LINK}
+Create Coupon Successfully
+    [Documentation]    Creates coupon and verifies it is saved successfully.
+    [Arguments]    ${coupon_code}    ${coupon_description}    ${discount_amount}
 
+    Open Coupons Page
+    Open New Coupon Form From Coupons Page
+    Fill Required Coupon Information    ${coupon_code}    ${coupon_description}    ${discount_amount}
+    Save Coupon
+    Verify Coupon Code Field Value    ${coupon_code}
+    Save Coupon
+    Verify Coupon Saved Successfully
