@@ -18,7 +18,7 @@ Generate Unique Fake Word With Timestamp
     [Documentation]    Returns unique fake word combined with current epoch timestamp.
     ${timestamp}=    Get Time    epoch
     ${fake_word}=    Generate Fake Word
-    ${unique_value}=    Set Variable    ${fake_word}-${timestamp}
+    ${unique_value}=    Set Variable    ${fake_word}${timestamp}
     RETURN    ${unique_value}
 
 Generate Fake Email

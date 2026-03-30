@@ -8,10 +8,8 @@ Resource    ../common/faker_keywords.resource
 
 *** Keywords ***
 Generate Unique Coupon Data
-    [Documentation]    Generates unique coupon data using Faker and timestamp.
-    ${timestamp}=           Get Time    epoch
-    ${fake_word}=           Generate Fake Word
-    ${coupon_code}=         Set Variable    ${fake_word}${timestamp}
+    [Documentation]    Generates unique coupon data using reusable faker keywords.
+    ${coupon_code}=         Generate Unique Fake Word With Timestamp
     ${coupon_description}=  Generate Fake Sentence    3
     ${discount_amount}=     Set Variable    10
     RETURN    ${coupon_code}    ${coupon_description}    ${discount_amount}
