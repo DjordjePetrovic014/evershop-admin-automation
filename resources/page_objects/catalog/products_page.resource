@@ -1,7 +1,8 @@
 *** Settings ***
-Documentation    Contains locators and page-level actions for products page in admin panel.
+Documentation       Contains locators and page-level actions for products page in admin panel.
 
-Resource    ../../keywords/common/web_common.resource
+Resource            ../../keywords/common/web_common.resource
+
 
 *** Variables ***
 # Navigation
@@ -54,8 +55,8 @@ Verify new product form is visible
     [Documentation]    Verifies that new product form is displayed.
     Wait Until Page Contains Wrapper    ${ERROR_TEXT}
 
-
 # --- Form actions ---
+
 Enter product name
     [Documentation]    Enters product name into product form.
     [Arguments]    ${product_name}
@@ -115,19 +116,19 @@ Enter meta title
     [Arguments]    ${meta_title}
     Clear And Input Text Wrapper    ${META_TITLE_INPUT}    ${meta_title}
 
-
 # --- Save ---
+
 Click save button
     [Documentation]    Clicks save button on product form.
     Scroll Into View Wrapper    ${SAVE_BUTTON}
-    Click Element Wrapper       ${SAVE_BUTTON}
+    Click Element Wrapper    ${SAVE_BUTTON}
 
 Verify editing header is visible
     [Documentation]    Verifies that editing page header is visible.
     Wait Until Visible Wrapper    ${EDITING_HEADER}    10s
 
-
 # --- Search & open ---
+
 Search product
     [Documentation]    Searches for product by name in products list.
     [Arguments]    ${product_name}
@@ -138,10 +139,10 @@ Open product link by name
     [Arguments]    ${product_name}
     ${product_link}=    Replace String    ${PRODUCT_LINK}    {{product_name}}    ${product_name}
     Wait Until Visible Wrapper    ${product_link}    10s
-    Click Element Wrapper         ${product_link}
-
+    Click Element Wrapper    ${product_link}
 
 # --- Delete ---
+
 Select product checkbox by name
     [Documentation]    Selects product row checkbox by product name.
     [Arguments]    ${product_name}
@@ -155,4 +156,4 @@ Click on delete button in products page
 Click on delete confirm button in products page
     [Documentation]    Confirms product deletion in modal dialog.
     Wait Until Visible Wrapper    ${DELETE_CONFIRM_BUTTON}    10s
-    Click Element Wrapper         ${DELETE_CONFIRM_BUTTON}
+    Click Element Wrapper    ${DELETE_CONFIRM_BUTTON}

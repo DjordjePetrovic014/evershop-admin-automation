@@ -1,10 +1,11 @@
 *** Settings ***
-Documentation    Contains reusable category-related workflows such as create and delete.
+Documentation       Contains reusable category-related workflows such as create and delete.
 
-Library     FakerLibrary
-Resource    ../../page_objects/catalog/categories_page.resource
-Resource    ../../keywords/common/web_common.resource
-Resource    ../common/faker_keywords.resource
+Library             FakerLibrary
+Resource            ../../page_objects/catalog/categories_page.resource
+Resource            ../../keywords/common/web_common.resource
+Resource            ../common/faker_keywords.resource
+
 
 *** Keywords ***
 Open Categories Page
@@ -39,17 +40,20 @@ Create Category
     Save Category
 
 Generate Unique Category Data
-    [Documentation]    Generates unique category data using FakerLibrary and timestamp.
-    ${unique_value}=        Generate Unique Fake Word With Timestamp
-    ${meta_title_fake}=     Generate Fake Sentence    3
-    ${meta_desc_fake}=      Generate Fake Sentence    6
-
-    ${category_name}=       Set Variable    ${unique_value}
-    ${url_key}=             Set Variable    ${unique_value}
-    ${meta_title}=          Set Variable    ${meta_title_fake}
+    [Documentation]    Generates unique category data as dictionary.
+    ${unique_value}=    Generate Unique Fake Word With Timestamp
+    ${meta_title_fake}=    Generate Fake Sentence    3
+    ${meta_desc_fake}=    Generate Fake Sentence    6
+    ${category_name}=    Set Variable    ${unique_value}
+    ${url_key}=    Set Variable    ${unique_value}
+    ${meta_title}=    Set Variable    ${meta_title_fake}
     ${meta_description}=    Set Variable    ${meta_desc_fake}
-
-    RETURN    ${category_name}    ${url_key}    ${meta_title}    ${meta_description}
+    VAR    &{category_data}
+    ...    name=${category_name}
+    ...    url_key=${url_key}
+    ...    meta_title=${meta_title}
+    ...    meta_description=${meta_description}
+    RETURN    ${category_data}
 
 Category Should Appear In Categories List
     [Documentation]    Verifies that created category is visible in categories list.

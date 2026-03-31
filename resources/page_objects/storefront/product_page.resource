@@ -1,14 +1,16 @@
 *** Settings ***
-Documentation    Contains locators and page-level actions for storefront product page.
+Documentation       Contains locators and page-level actions for storefront product page.
 
-Resource    ../../keywords/common/web_common.resource
+Resource            ../../keywords/common/web_common.resource
+
 
 *** Variables ***
-${PRODUCT_QUANTITY_INPUT}    xpath=//input[@name="qty" or @type="number"]
-${ADD_TO_CART_BUTTON}        xpath=//button[contains(normalize-space(.), "ADD TO CART")]
+${PRODUCT_QUANTITY_INPUT}       xpath=//input[@name="qty" or @type="number"]
+${ADD_TO_CART_BUTTON}           xpath=//button[contains(normalize-space(.), "ADD TO CART")]
 
-${VIEW_CART_BUTTON}    xpath=//button[contains(normalize-space(.), "View Cart")]
-${CHECKOUT_BUTTON}     xpath=//button[contains(normalize-space(.), "Checkout")]
+${VIEW_CART_BUTTON}             xpath=//button[contains(normalize-space(.), "View Cart")]
+${CHECKOUT_BUTTON}              xpath=//button[contains(normalize-space(.), "Checkout")]
+
 
 *** Keywords ***
 Click add to cart button

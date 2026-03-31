@@ -1,8 +1,9 @@
 *** Settings ***
-Documentation    Contains reusable storefront product-related keywords.
+Documentation       Contains reusable storefront product-related keywords.
 
-Resource    ../../page_objects/storefront/product_page.resource
-Resource    ../common/web_common.resource
+Resource            ../../page_objects/storefront/product_page.resource
+Resource            ../common/web_common.resource
+
 
 *** Keywords ***
 Open Storefront Product Page

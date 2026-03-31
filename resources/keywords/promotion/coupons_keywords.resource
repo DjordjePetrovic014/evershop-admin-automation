@@ -1,18 +1,23 @@
 *** Settings ***
-Documentation    Contains reusable coupon-related keywords and coupon data generators.
+Documentation       Contains reusable coupon-related keywords and coupon data generators.
 
-Library    DateTime
-Resource    ../../page_objects/promotion/coupons_page.resource
-Resource    ../common/web_common.resource
-Resource    ../common/faker_keywords.resource
+Library             DateTime
+Resource            ../../page_objects/promotion/coupons_page.resource
+Resource            ../common/web_common.resource
+Resource            ../common/faker_keywords.resource
+
 
 *** Keywords ***
 Generate Unique Coupon Data
-    [Documentation]    Generates unique coupon data using reusable faker keywords.
-    ${coupon_code}=         Generate Unique Fake Word With Timestamp
-    ${coupon_description}=  Generate Fake Sentence    3
-    ${discount_amount}=     Set Variable    10
-    RETURN    ${coupon_code}    ${coupon_description}    ${discount_amount}
+    [Documentation]    Generates unique coupon data as dictionary.
+    ${coupon_code}=    Generate Unique Fake Word With Timestamp
+    ${coupon_description}=    Generate Fake Sentence    3
+    VAR    ${discount_amount}    10
+    VAR    &{coupon_data}
+    ...    code=${coupon_code}
+    ...    description=${coupon_description}
+    ...    discount_amount=${discount_amount}
+    RETURN    ${coupon_data}
 
 Open Coupons Page
     [Documentation]    Opens Coupons page from admin navigation.

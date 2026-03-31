@@ -1,12 +1,14 @@
 *** Settings ***
-Documentation    Contains reusable login-related keywords and authentication flows.
+Documentation       Contains reusable login-related keywords and authentication flows.
 
-Resource    ../../page_objects/admin/login_page.resource
-Resource    ../common/web_common.resource
+Resource            ../../page_objects/admin/login_page.resource
+Resource            ../common/web_common.resource
+
 
 *** Variables ***
-${VALID_EMAIL}       djolevukas@gmail.com
-${VALID_PASSWORD}    test1234
+${VALID_EMAIL}          djolevukas@gmail.com
+${VALID_PASSWORD}       test1234
+
 
 *** Keywords ***
 Open Admin Login Page

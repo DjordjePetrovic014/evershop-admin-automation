@@ -1,13 +1,15 @@
 *** Settings ***
-Documentation    Contains locators and page-level actions for storefront checkout page.
+Documentation       Contains locators and page-level actions for storefront checkout page.
 
-Resource    ../../keywords/common/web_common.resource
+Resource            ../../keywords/common/web_common.resource
+
 
 *** Variables ***
-${CHECKOUT_COUPON_INPUT}              xpath=//input[@name="coupon" or @placeholder="Enter coupon code"]
-${APPLY_COUPON_BUTTON}                xpath=//button[contains(normalize-space(.), "Apply")]
-${COUPON_APPLIED_SUCCESS_TOAST}       xpath=//div[@role="alert" and contains(normalize-space(.), "Coupon applied successfully")]
-${DISCOUNT_ROW}                       xpath=//*[contains(normalize-space(.), "Discount(")]
+${CHECKOUT_COUPON_INPUT}            xpath=//input[@name="coupon" or @placeholder="Enter coupon code"]
+${APPLY_COUPON_BUTTON}              xpath=//button[contains(normalize-space(.), "Apply")]
+${COUPON_APPLIED_SUCCESS_TOAST}     xpath=//div[@role="alert" and contains(normalize-space(.), "Coupon applied successfully")]
+${DISCOUNT_ROW}                     xpath=//*[contains(normalize-space(.), "Discount(")]
+
 
 *** Keywords ***
 Enter checkout coupon code

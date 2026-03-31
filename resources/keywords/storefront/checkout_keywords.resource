@@ -1,8 +1,9 @@
 *** Settings ***
-Documentation    Contains reusable storefront checkout-related keywords.
+Documentation       Contains reusable storefront checkout-related keywords.
 
-Resource    ../../page_objects/storefront/checkout_page.resource
-Resource    ../common/web_common.resource
+Resource            ../../page_objects/storefront/checkout_page.resource
+Resource            ../common/web_common.resource
+
 
 *** Keywords ***
 Enter Coupon Code On Checkout

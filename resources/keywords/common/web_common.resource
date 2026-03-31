@@ -1,10 +1,10 @@
 *** Settings ***
-Documentation    Contains common reusable web interaction keywords used across all pages.
+Documentation       Contains common reusable web interaction keywords used across all pages.
 
-Library    SeleniumLibrary
+Library             SeleniumLibrary
+
 
 *** Keywords ***
-
 Click Element Wrapper
     [Documentation]    Clicks element using provided locator.
     [Arguments]    ${locator}
@@ -18,9 +18,9 @@ Click Element And Wait
 Click Visible Element Wrapper
     [Arguments]    ${locator}    ${timeout}=10s
     Wait Until Element Is Visible    ${locator}    ${timeout}
-    Scroll Element Into View         ${locator}
+    Scroll Element Into View    ${locator}
     Sleep    0.5s
-    Click Element                    ${locator}
+    Click Element    ${locator}
 
 Input Text Wrapper
     [Documentation]    Inputs text into element using provided locator.
@@ -47,7 +47,7 @@ Clear And Input Text Wrapper
     [Documentation]    Clears input field and types new value.
     [Arguments]    ${locator}    ${text}
     Clear Element Text Wrapper    ${locator}
-    Input Text Wrapper            ${locator}    ${text}
+    Input Text Wrapper    ${locator}    ${text}
 
 Wait Until Page Contains Wrapper
     [Documentation]    Waits until given text is visible on page.
@@ -72,8 +72,12 @@ Scroll Sidebar To Element
     [Documentation]    Scrolls sidebar container until element is visible.
     [Arguments]    ${container}    ${element}
     ${container_el}=    Get WebElement    ${container}
-    ${target_el}=       Get WebElement    ${element}
-    Execute JavaScript    arguments[0].scrollTop = arguments[1].offsetTop;    ARGUMENTS    ${container_el}    ${target_el}
+    ${target_el}=    Get WebElement    ${element}
+    Execute JavaScript
+    ...    arguments[0].scrollTop = arguments[1].offsetTop;
+    ...    ARGUMENTS
+    ...    ${container_el}
+    ...    ${target_el}
 
 Text Field Value Should Be Wrapper
     [Documentation]    Verifies that text field value matches expected value.

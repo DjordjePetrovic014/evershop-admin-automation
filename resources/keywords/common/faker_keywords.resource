@@ -1,6 +1,7 @@
 *** Settings ***
-Library    FakerLibrary
-Library    String
+Library     FakerLibrary
+Library     String
+
 
 *** Keywords ***
 Generate Fake Word

@@ -1,11 +1,12 @@
 *** Settings ***
-Documentation    Contains reusable product-related workflows such as create, update, search and delete.
+Documentation       Contains reusable product-related workflows such as create, update, search and delete.
 
-Library    String
-Library    FakerLibrary
-Resource    ../../page_objects/catalog/products_page.resource
-Resource    ../common/web_common.resource
-Resource    ../common/faker_keywords.resource
+Library             String
+Library             FakerLibrary
+Resource            ../../page_objects/catalog/products_page.resource
+Resource            ../common/web_common.resource
+Resource            ../common/faker_keywords.resource
+
 
 *** Keywords ***
 Open Products Page
@@ -23,31 +24,27 @@ Fill Required Product Information
     Enter product name    ${product_name}
     Enter sku    ${sku}
     Enter price    ${price}
-
     Open tax class dropdown
     Select taxable goods option
-
-    #Enable product status    #Not required
+    # Enable product status    #Not required
     Select catalog search visibility
     Enable manage stock
     Select in stock option
-
     Enter quantity    10
     Enter weight    1
     Enter url key    ${url_key}
     Enter meta title    ${product_name}
 
 Generate Unique Product Data
-    [Documentation]    Generates unique product data using FakerLibrary and timestamp.
-    ${timestamp}=       Get Time    epoch
+    [Documentation]    Generates unique product data as dictionary.
+    ${timestamp}=    Get Time    epoch
     ${unique_value}=    Generate Unique Fake Word With Timestamp
-
     ${product_name}=    Set Variable    ${unique_value}
-    ${sku}=             Set Variable    TEST${timestamp}
-    ${price}=           Set Variable    50
-    ${url_key}=         Set Variable    ${unique_value}
-
-    RETURN    ${product_name}    ${sku}    ${price}    ${url_key}
+    ${sku}=    Set Variable    TEST${timestamp}
+    ${price}=    Set Variable    50
+    ${url_key}=    Set Variable    ${unique_value}
+    VAR    &{product_data}    name=${product_name}    sku=${sku}    price=${price}    url_key=${url_key}
+    RETURN    ${product_data}
 
 Update Product Price
     [Documentation]    Updates product price in product form.
@@ -113,7 +110,6 @@ Product Should Not Be Visible In List
     [Documentation]    Verifies that product is no longer visible in products list.
     [Arguments]    ${product_name}
     Wait Until Page Does Not Contain Wrapper    ${product_name}    10s
-
 
 Create Product Successfully
     [Documentation]    Creates product and verifies editing page is displayed.
