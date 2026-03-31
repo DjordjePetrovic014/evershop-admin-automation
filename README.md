@@ -64,8 +64,6 @@ The test suite covers both positive and negative login scenarios:
 - Password shorter than allowed length
 - Invalid email format
 
-Run login tests:
-- robot -d results tests/admin_login_tests.robot
 
 ## Product Management Test Scenarios
 
@@ -84,8 +82,7 @@ The test suite covers product-related flows in the admin panel:
 - Product without SKU should fail
 - Product without price should fail
 
-Run product tests:
-- robot -d results tests/catalog/products_tests.robot
+
 
 ## Categories Test Scenarios
 
@@ -97,5 +94,62 @@ The test suite covers category management flows:
 - Delete category
 - Verify category presence in list
 
-Run categories tests:
-- robot -d results tests/catalog/categories_tests.robot
+
+---
+
+## Coupons Test Scenarios
+
+The coupon test suite covers both admin-side coupon management and storefront checkout integration.
+
+### Admin Coupon Flows
+- Create coupon with dynamic data
+- Search and verify created coupon
+- Edit coupon discount amount
+- Validate required field errors
+- Validate duplicate coupon code handling
+
+### Validation Scenarios
+- Coupon with empty required fields should fail
+- Coupon with duplicate code should fail
+
+### Positive Scenarios
+- Create new coupon successfully
+- Edit coupon discount amount successfully
+
+### End-to-End Scenario
+- Create product in admin
+- Create coupon in admin
+- Open product page in storefront
+- Add product to cart
+- Proceed to checkout
+- Apply coupon successfully during checkout
+
+
+---
+
+## Key Features
+
+- Page Object Model (POM) architecture
+- Custom wrapper keywords for Selenium actions
+- Reusable and modular keyword design
+- Dynamic test data generation using FakerLibrary
+- Dictionary-based test data handling
+- End-to-end test coverage across admin and storefront
+- Clear separation between test logic and implementation
+
+---
+
+## Technologies Used
+
+- Robot Framework
+- SeleniumLibrary
+- FakerLibrary
+- Python
+- Docker (for local environment)
+
+---
+
+## Author
+
+Djordje Petrovic
+
